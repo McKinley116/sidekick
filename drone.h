@@ -6,12 +6,12 @@
 #define DRONE_H
 #include <string>
 
-class drone {
+class Drone {
 public:
   void move();
   void scan();
   void return_home();
-  void drone_status();
+  void status();
 
  private:
    std::string name;

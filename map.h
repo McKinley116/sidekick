@@ -7,12 +7,12 @@
 
 
 
-class map {
+class Map {
 public:
-  void build_map();
-  void reset_map();
-  void print_map();
-  void populate_map();
+  void build();
+  void reset();
+  void print();
+  void populate();
 
 private:
   char map[10][10];
