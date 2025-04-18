@@ -9,27 +9,29 @@
 class Drone {
 public:
 
-    Drone(std::string name, int id){
+    Drone(const std::string &name, int id){
         this->name = name;
         this->id = id;
         this->battery = 100;
-        this->position = 0;
+        this->position_x = 0;
+        this ->position_y = 0;
         this->speed = 0;
     }
 
-  void move();
-  void scan();
-  void return_home();
-  void status() const;
+    void move();
+    void scan();
+    void return_home();
+    void status() const;
     void battery_status() const;
-    void charge() const;
+    void charge();
 
  private:
    std::string name;
-   int id;
-   int battery;
-   int position;
-   int speed;
+    int id;
+    int battery;
+    int position_x;
+    int position_y;
+    int speed;
 
 };
 

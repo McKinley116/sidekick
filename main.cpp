@@ -4,36 +4,59 @@
 
 #include <iostream>
 #include "drone.h"
-//#include "map.h"
 using namespace std;
 
 //DRONE FUNCTIONS
 void Drone::move() {
-    cout << "Moving" << endl;
-    battery -= 5;
+    if (battery > 10) {
+        battery -= 10; // Moving consumes battery
+        cout << "Drone " << name << " moved to position " <<  ".\n";
+    } else {
+        cout << "Battery too low to move. Please charge.\n";
+    }
+
 };
 
 void Drone::scan() {
-    cout << "Scanning" << endl;
-    battery -= 10;
+    if (battery > 5) {
+        cout << "Drone " << name << " is scanning the area...\n";
+        battery -= 5; // Scanning uses battery
+    } else {
+        cout << "Battery too low to scan. Please charge.\n";
+    }
+
 };
 
 void Drone::return_home() {
-    cout << "Returning Home" << endl;
-    battery -= 20;
+    if (battery > 10) {
+        cout << "Drone " << name << " is returning home. Current position: " << ".\n";
+        battery -= 10; // Returning home consumes battery
+    } else {
+        cout << "Battery too low to return home. Please charge.\n";
+    }
+
 };
 
 void Drone::status() const {
-    cout << "Drone: " << name << endl;
-    cout << "ID: " << id << endl;
-    cout << "Battery: " << battery << endl;
+    cout << "Drone Name: " << name << "\n";
+    cout << "Drone ID: " << id << "\n";
+    cout << "Battery Level: " << battery << "%\n";
+    cout << "Current Speed: " << speed << "\n";
 };
 
 void Drone::battery_status() const {
-    cout << "Battery: " << battery << endl;
+    cout << "Battery Level: " << battery << "%\n";
+    if (battery > 50) {
+        cout << "Battery Status: Good\n";
+    } else if (battery > 20) {
+        cout << "Battery Status: Low\n";
+    } else {
+        cout << "Battery Status: Critical. Please charge.\n";
+    }
+
 }
 
-void Drone::charge() const {
+void Drone::charge() {
     cout << "Charging" << endl;
     battery += 10;
 }
