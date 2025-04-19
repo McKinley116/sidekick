@@ -5,17 +5,22 @@
 #ifndef MAP_H
 #define MAP_H
 
-
+#include <iostream>
+#include <vector>
+#include "drone.h"
 
 class Map {
+
 public:
-  void build();
-  void reset();
-  void print();
-  void populate();
+  Map(int width, int height); // defines size of map
+  void add_drone(Drone &drone); // references drone object from drone class
+  void display_map() const; // displays map
 
 private:
-  char map[10][10];
+  int width;
+  int height;
+  std::vector<std::vector<int>> map; // used as a 2d grid to represent the map
+  std::vector<Drone *> drones; // list of drone on the map using a pointer
 };
 
 
