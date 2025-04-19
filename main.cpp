@@ -7,17 +7,17 @@
 using namespace std;
 
 //DRONE FUNCTIONS
-void Drone::move() {
+void Drone::move(int x, int y) {
     if (battery > 10) {
         battery -= 10; // Moving consumes battery
-        cout << "Drone " << name << " moved to position " <<  ".\n";
+        cout << "Drone " << name << " moved to position "<< x << "(x) " << y << "(y)" <<  ".\n";
     } else {
         cout << "Battery too low to move. Please charge.\n";
     }
 
 };
 
-void Drone::scan() {
+void Drone::scan(int x, int y) {
     if (battery > 5) {
         cout << "Drone " << name << " is scanning the area...\n";
         battery -= 5; // Scanning uses battery
@@ -29,7 +29,7 @@ void Drone::scan() {
 
 void Drone::return_home() {
     if (battery > 10) {
-        cout << "Drone " << name << " is returning home. Current position: " << ".\n";
+        cout <<  name << " is returning home. Current position: " << ".\n";
         battery -= 10; // Returning home consumes battery
     } else {
         cout << "Battery too low to return home. Please charge.\n";
@@ -61,6 +61,14 @@ void Drone::charge() {
     battery += 10;
 }
 
+std::string Drone::get_name() const {
+    return name;
+}
+
+int Drone::getPositionX() const {
+    return position_x;
+}
+
 //MAP FUNCTIONS
 //void Map::build();
 //void Map::reset();
@@ -72,8 +80,8 @@ int main() {
 
     Drone testDrone("TestDrone", 1);
     testDrone.status();
-    testDrone.move();
-    testDrone.scan();
+    testDrone.move(10, 2);
+    testDrone.scan(10, 2);
     testDrone.battery_status();
     testDrone.return_home();
 

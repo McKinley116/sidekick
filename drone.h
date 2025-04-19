@@ -18,12 +18,15 @@ public:
         this->speed = 0;
     }
 
-    void move();
-    void scan();
+    void move(int x, int y);
+    void scan(int x, int y);
     void return_home();
     void status() const;
     void battery_status() const;
     void charge();
+    std::string get_name() const;
+    int getPositionX() const;
+    void setPositionX(int position_x);
 
  private:
    std::string name;
