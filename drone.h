@@ -9,6 +9,7 @@
 class Drone {
 public:
 
+    //Drone Constructor to set intial variabls for each drone that is created
     Drone(const std::string &name, int id){
         this->name = name;
         this->id = id;
@@ -25,8 +26,7 @@ public:
     void battery_status() const;
     void charge();
     std::string get_name() const;
-    int getPositionX() const;
-    void setPositionX(int position_x);
+
 
  private:
    std::string name;

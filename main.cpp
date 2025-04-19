@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "drone.h"
+#include "map.h"
 using namespace std;
 
 //DRONE FUNCTIONS
@@ -65,25 +66,31 @@ std::string Drone::get_name() const {
     return name;
 }
 
-int Drone::getPositionX() const {
-    return position_x;
+//MAP FUNCTIONS
+void Map::display_map() const {
+    cout << "Map State: " << endl;
+    for (int i = 0; i < grid.size(); i++) {
+        for (int j = 0; j < grid[i].size(); j++) {
+            cout << grid[i * width + j] << " "; // prints each portion of the map
+        }
+    }
+    cout << endl;
 }
 
-//MAP FUNCTIONS
-//void Map::build();
-//void Map::reset();
-//void Map::print();
-//void Map::populate();
+void Map::add_drone(Drone &drone) {
+    if (static_cast<size_t>(width * height) <= drone.size())
+        cout << "The map is full, cannot add." << endl;
+    drone.push_back(drone);
+    cout << "Drone added to map." << endl;
+}
 
 
 int main() {
 
-    Drone testDrone("TestDrone", 1);
-    testDrone.status();
-    testDrone.move(10, 2);
-    testDrone.scan(10, 2);
-    testDrone.battery_status();
-    testDrone.return_home();
+    Drone testDrone("Alpha", 2342);
+    Map map(10, 10);
+    map.add_drone(testDrone);
+    map.display_map();
 
     return 0;
 }
