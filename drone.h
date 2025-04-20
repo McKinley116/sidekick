@@ -17,6 +17,7 @@ public:
         this->position_x = 0;
         this ->position_y = 0;
         this->speed = 0;
+
     }
 
     void move(int x, int y);
@@ -26,9 +27,12 @@ public:
     void battery_status() const;
     void charge();
     std::string get_name() const;
+    void get_position() const;
+    void set_position(int x, int y);
+    int get_position_x() const;
+    int get_position_y() const;
 
-
- private:
+private:
    std::string name;
     int id;
     int battery;
