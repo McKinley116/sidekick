@@ -1,0 +1,5 @@
+# ninja log v6
+1	243	1745365249265000961	CMakeFiles/sidekick.dir/main.cpp.o	5a34f1046a12e75e
+4	210	1745365318249830625	CMakeFiles/sidekick.dir/map.cpp.o	c3fb315ef484d5ce
+4	193	1745365365324196328	CMakeFiles/sidekick.dir/drone.cpp.o	aada6d207f7d3d59
+193	222	1745365365513088261	sidekick	a56ef43473607a68
