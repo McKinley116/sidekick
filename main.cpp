@@ -142,10 +142,10 @@ int main() {
     // Create a drone and add it to the map
     Drone drone1("Alpha", 1);
     map.add_drone(drone1);
+    drone1.status();
 
     // Move the drone and display its progress
     drone1.move(2, 3);
-    drone1.status();
 
     // Charge the drone
     drone1.charge();
@@ -156,6 +156,7 @@ int main() {
 
     drone1.move(3, 3);
     map.display_map();
+    drone1.status();
 
     return 0;
 }
