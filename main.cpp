@@ -19,8 +19,8 @@ int main() {
     Map map(5, 5);
 
     // User command and imputs
-    std::string command, drone_name;
-    int x, y;
+    std::string drone_name;
+    int x, y, command;
 
     //Command loops
     display_menu();
@@ -30,16 +30,18 @@ int main() {
         std::cin >> command;
 
         switch (command) {
-            case 'add_drone':
+
+            case '1':
                 std::cout << "Enter Drone Name: ";
                 std::cin >> drone_name;
                 Drone new_drone(drone_name); // created constructor in drone.h
                 map.add_drone(new_drone);
                 std::cout << "Drone: " << drone_name << " added to the map.\n";
                 break;
-            case 'move_drone':
+
+            case '2':
                 std::cout << "Enter Drone Name and position (x) (y): ";
-                std::cin >> drone_name >> " " >> x >> " " >> y >> "\n";
+                std::cin >> drone_name >> " " >> x >> " " >> y >> std::endl;
                 // looks for drones and moves them  around the map
                 for (auto& drone : map.get_drone(drone_name)) {
                     if (drone.get_name() == drone_name) {
@@ -47,7 +49,8 @@ int main() {
                         break;
                     }
                 }
-            case 'charge':
+
+            case '3':
                 std::cin >> drone_name;
                 for (auto& drone : map.get_drone(drone_name)) {
                     if (drone.get_name() == drone_name) {
@@ -55,8 +58,26 @@ int main() {
                         break;
                     }
                 }
-            case 'map':
+
+            case '4':
                 map.display_map();
+                break;
+
+            case '5':
+                std::cin >> drone_name;
+                for (auto& drone : map.get_drone(drone_name)) {
+                    if (drone.get_name() == drone_name) {
+                        drone.status();
+                        break;
+                    }
+                }
+
+            case '6':
+                std::cout << "Exiting program... Goodbye!\n";
+                break;
+
+            default:
+                std::cout << "Invalid command! Try again.\n";
         }
     }
 
