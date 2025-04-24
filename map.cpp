@@ -39,3 +39,9 @@ void Map::add_drone(Drone &drone) {
     drones.push_back(&drone);
     cout << "Drone " << drone.get_name() << " added to the map.\n";
 }
+
+void Map::get_drone(Drone &drone) const {
+    if (static_cast<size_t>(width * height) <= drones.size()) {
+
+    }
+}

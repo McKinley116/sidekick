@@ -18,7 +18,10 @@ public:
     grid.resize(width * height, "-");
   } // defines size of map
   void add_drone(Drone &drone); // references drone object from drone class
+  void get_drone(Drone &drone) const;
+
   void display_map() const; // displays map
+  void get_drone(const std::string & drone);
 
 private:
   int width;
