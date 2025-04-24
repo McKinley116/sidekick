@@ -22,6 +22,34 @@ int main() {
     std::string command, drone_name;
     int x, y;
 
+    //Command loops
+    display_menu();
+    while (true ) {
+
+        std::cout << "Enter a Command: " ;
+        std::cin >> command;
+
+        switch (command) {
+            case 'add_drone':
+                std::cout << "Enter Drone Name: ";
+                std::cin >> drone_name;
+                Drone new_drone(drone_name); // created constructor in drone.h
+                map.add_drone(new_drone);
+                std::cout << "Drone: " << drone_name << " added to the map.\n";
+                break;
+            case 'move_drone':
+                std::cout << "Enter Drone Name and position (x) (y): ";
+                std::cin >> drone_name >> " " >> x >> " " >> y >> "\n";
+                // looks for drones and moves them  around the map
+                for (auto& drone : map.get_drone(drone_name)) {
+                    if (drone.get_name() == drone_name) {
+                        drone.move(x, y);
+                        break;
+                    }
+                }
+        }
+    }
+
     return 0;
 }
 
