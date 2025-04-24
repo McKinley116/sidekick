@@ -47,6 +47,16 @@ int main() {
                         break;
                     }
                 }
+            case 'charge':
+                std::cin >> drone_name;
+                for (auto& drone : map.get_drone(drone_name)) {
+                    if (drone.get_name() == drone_name) {
+                        drone.charge();
+                        break;
+                    }
+                }
+            case 'map':
+                map.display_map();
         }
     }
 
