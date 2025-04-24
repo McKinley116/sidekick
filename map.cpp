@@ -1,7 +1,8 @@
 //
 // Created by Brandon McKinley on 4/18/25.
 //
-
+#include <iostream>
+#include <vector>
 #include "map.h"
 using namespace std;
 
