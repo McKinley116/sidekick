@@ -10,6 +10,10 @@
 
 using namespace std;
 
+//Function Prototypes
+
+void display_menu();
+
 // MAIN FUNCTION
 int main() {
 
@@ -36,4 +40,8 @@ int main() {
     drone1.status();
 
     return 0;
+}
+
+void display_menu() {
+
 }
