@@ -41,7 +41,5 @@ void Map::add_drone(Drone &drone) {
 }
 
 void Map::get_drone(Drone &drone) const {
-    if (static_cast<size_t>(width * height) <= drones.size()) {
 
-    }
 }

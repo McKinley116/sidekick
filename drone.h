@@ -20,6 +20,8 @@ public:
 
     }
 
+    explicit Drone(const std::string & string); // created constructor for new_drone in main.cpp
+
     void move(int x, int y);
     void scan(int x, int y);
     void return_home();
