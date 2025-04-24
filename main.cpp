@@ -8,8 +8,6 @@
 #include "drone.h"
 #include "map.h"
 
-using namespace std;
-
 //Function Prototypes
 
 void display_menu();
@@ -20,28 +18,21 @@ int main() {
     // Create a 5x5 map
     Map map(5, 5);
 
-    // Create a drone and add it to the map
-    Drone drone1("Alpha", 1);
-    map.add_drone(drone1);
-    drone1.status();
-
-    // Move the drone and display its progress
-    drone1.move(2, 3);
-
-    // Charge the drone
-    drone1.charge();
-    drone1.battery_status();
-
-    // Display the map
-    map.display_map();
-
-    drone1.move(3, 3);
-    map.display_map();
-    drone1.status();
+    // User command and imputs
+    std::string command, drone_name;
+    int x, y;
 
     return 0;
 }
 
 void display_menu() {
+    std::cout << "\n--- Commands ---\n";
+    std::cout << "1) add_drone <name>\n";
+    std::cout << "2) move <drone_name> <x> <y>\n";
+    std::cout << "3) charge <drone_name>\n";
+    std::cout << "4) map\n";
+    std::cout << "5) status <drone_name>\n";
+    std::cout << "6) exit\n";
+    std::cout << "----------------\n";
 
 }
