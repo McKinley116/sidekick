@@ -40,6 +40,6 @@ void Map::add_drone(Drone &drone) {
     cout << "Drone " << drone.get_name() << " added to the map.\n";
 }
 
-void Map::get_drone(Drone &drone) const {
-
+int Map::get_drone(const std::string & drone) {
+    return static_cast<size_t>(drones.size()) - 1;
 }

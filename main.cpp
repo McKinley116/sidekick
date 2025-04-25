@@ -19,8 +19,8 @@ int main() {
     Map map(5, 5);
 
     // User command and imputs
-    std::string drone_name;
-    int x, y, command;
+    std::string command, drone_name;
+    int x, y;
 
     //Command loops
     display_menu();
@@ -29,28 +29,25 @@ int main() {
         std::cout << "Enter a Command: " ;
         std::cin >> command;
 
-        switch (command) {
+        while (true) {
+            std::cout << "\nEnter your command: ";
+            std::cin >> command; // Command input
 
-            case '1':
-                std::cout << "Enter Drone Name: ";
+            if (command == "add_drone") {
                 std::cin >> drone_name;
-                Drone new_drone(drone_name); // created constructor in drone.h
-                map.add_drone(new_drone);
-                std::cout << "Drone: " << drone_name << " added to the map.\n";
-                break;
-
-            case '2':
-                std::cout << "Enter Drone Name and position (x) (y): ";
-                std::cin >> drone_name >> " " >> x >> " " >> y >> std::endl;
-                // looks for drones and moves them  around the map
-                for (auto& drone : map.get_drone(drone_name)) {
+                Drone new_drone(drone_name);       // Create a new drone
+                map.add_drone(new_drone);        // Add drone to the map
+                std::cout << "Drone '" << drone_name << "' added to the map.\n";
+            } else if (command == "move") {
+                std::cin >> drone_name >> x >> y;
+                // Find and move the drone by name
+                for (int i = drone.size; i <= map.get_drone(drone_name)) {
                     if (drone.get_name() == drone_name) {
                         drone.move(x, y);
                         break;
                     }
                 }
-
-            case '3':
+            } else if (command == "charge") {
                 std::cin >> drone_name;
                 for (auto& drone : map.get_drone(drone_name)) {
                     if (drone.get_name() == drone_name) {
@@ -58,12 +55,9 @@ int main() {
                         break;
                     }
                 }
-
-            case '4':
-                map.display_map();
-                break;
-
-            case '5':
+            } else if (command == "map") {
+                map.display_map();         // Show the map
+            } else if (command == "status") {
                 std::cin >> drone_name;
                 for (auto& drone : map.get_drone(drone_name)) {
                     if (drone.get_name() == drone_name) {
@@ -71,15 +65,14 @@ int main() {
                         break;
                     }
                 }
-
-            case '6':
-                std::cout << "Exiting program... Goodbye!\n";
+            } else if (command == "exit") {
+                std::cout << "Exiting program. Goodbye!\n";
                 break;
-
-            default:
-                std::cout << "Invalid command! Try again.\n";
+            } else {
+                std::cout << "Invalid command. Try again.\n";
+            }
         }
-    }
+
 
     return 0;
 }
