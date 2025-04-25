@@ -8,6 +8,16 @@ using namespace std;
 
 // DRONE CLASS IMPLEMENTATION
 
+Drone::Drone(const std::string &string) {
+    name = string;
+    id = 0;
+    battery = 100;
+    position_x = 0;
+    position_y = 0;
+    speed = 0;
+}
+
+
 // Move the drone to a new position with battery validation
 void Drone::move(int x, int y) {
     if (battery > 10) {

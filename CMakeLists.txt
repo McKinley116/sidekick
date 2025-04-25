@@ -1,13 +1,19 @@
-cmake_minimum_required(VERSION 3.30)
-project(sidekick)
+# Minimum CMake version
+cmake_minimum_required(VERSION 3.15)
 
+# Project name and configurations
+project(sidekick VERSION 1.0 LANGUAGES CXX)
+
+# Set C++ standard
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-include_directories(.)
-
+# Executable target
 add_executable(sidekick
-    drone.cpp
-    drone.h
-    main.cpp
-    map.cpp
-    map.h)
+        main.cpp
+        drone.cpp
+        map.cpp
+)
+
+# Include header directory
+include_directories(${CMAKE_SOURCE_DIR})

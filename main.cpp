@@ -3,7 +3,6 @@
 //
 
 #include <iostream>
-#include <vector>
 #include <string> // for string usage in Drone
 #include "drone.h"
 #include "map.h"
