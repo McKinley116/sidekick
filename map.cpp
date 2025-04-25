@@ -1,45 +1,62 @@
 //
 // Created by Brandon McKinley on 4/18/25.
 //
-#include <iostream>
-#include <vector>
 #include "map.h"
-using namespace std;
 
-// MAP CLASS IMPLEMENTATION
+// Constructor for the Map class
+Map::Map(int width, int height) : width(width), height(height) {}
 
-// Display the current state of the map
-void Map::display_map() const {
-    cout << "Map State:\n";
-    for (int i = 0; i < height; ++i) {
-        for (int j = 0; j < width; ++j) {
-            // Check if a drone occupies the current position
-            bool drone_found = false;
-            for (const Drone *drone : drones) {
-                if (drone->get_position_x() == j && drone->get_position_y() == i) {
-                    cout << "D "; // 'D' represents a drone
-                    drone_found = true;
-                    break;
-                }
-            }
-            if (!drone_found) {
-                cout << "- "; // Empty cell
-            }
+// Check if coordinates are within map bounds
+bool Map::is_within_bounds(int x, int y) const {
+    return x >= 0 && x < width && y >= 0 && y < height;
+}
+
+// Add a drone to the map
+bool Map::add_drone(const Drone& drone) {
+    for (const auto& d : drones) {
+        if (d.get_name() == drone.get_name()) {
+            return false;  // Drone with this name already exists
         }
-        cout << "\n";
     }
+    drones.push_back(drone);
+    return true;
 }
 
-// Add a drone to the map if there is space
-void Map::add_drone(Drone &drone) {
-    if (static_cast<size_t>(width * height) <= drones.size()) {
-        cout << "The map is full, cannot add more drones.\n";
-        return;
+// Move a drone to the specified coordinates
+bool Map::move_drone(const std::string& name, int x, int y) {
+    for (auto& d : drones) {
+        if (d.get_name() == name) {
+            d.move(x, y);
+            return true;
+        }
     }
-    drones.push_back(&drone);
-    cout << "Drone " << drone.get_name() << " added to the map.\n";
+    return false;  // Drone not found
 }
 
-int Map::get_drone(const std::string & drone) {
-    return static_cast<size_t>(drones.size()) - 1;
+// Charge a drone by name
+bool Map::charge_drone(const std::string& name) {
+    for (auto& d : drones) {
+        if (d.get_name() == name) {
+            d.charge();
+            return true;
+        }
+    }
+    return false;  // Drone not found
 }
+
+// Display the map with drones
+void Map::display_map() const {
+    // Implementation of grid display goes here
+}
+
+// Display the status of a specific drone
+bool Map::display_drone_status(const std::string& name) const {
+    for (const auto& d : drones) {
+        if (d.get_name() == name) {
+            d.status();
+            return true;
+        }
+    }
+    return false;  // Drone not found
+}
+

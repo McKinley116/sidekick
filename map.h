@@ -1,34 +1,42 @@
 //
 // Created by Brandon McKinley on 4/18/25.
 //
-
 #ifndef MAP_H
 #define MAP_H
 
-#include <iostream>
-#include <vector>
 #include "drone.h"
+#include <vector>
+#include <string>
 
-class Drone;
-
+// Map class to manage a 2D grid and the drones placed on it
 class Map {
+private:
+  int width;                   // Width of the map
+  int height;                  // Height of the map
+  std::vector<Drone> drones;   // List of drones on the map
 
 public:
-  Map(int width, int height) : width(width), height(height) {
-    grid.resize(width * height, "-");
-  } // defines size of map
-  void add_drone(Drone &drone); // references drone object from drone class
-  void get_drone(Drone &drone) const;
-  void display_map() const; // displays map
-  int get_drone(const std::string & drone);
+  // Constructor to initialize a map with given dimensions
+  Map(int width, int height);
 
-private:
-  int width;
-  int height;
-  std::vector<std::string> grid; // used as a 2d grid to represent the map
-  std::vector<Drone *> drones; // list of drone on the map using a pointer
+  // Check if given coordinates are within the map bounds
+  bool is_within_bounds(int x, int y) const;
+
+  // Add a new drone to the map, return true if successful, false if drone name already exists
+  bool add_drone(const Drone& drone);
+
+  // Move a drone to specific coordinates, return true if successful
+  bool move_drone(const std::string& name, int x, int y);
+
+  // Charge the battery of a drone, return true if successful
+  bool charge_drone(const std::string& name);
+
+  // Display the 2D map with all existing drones
+  void display_map() const;
+
+  // Display the status of a specific drone, return true if found
+  bool display_drone_status(const std::string& name) const;
 };
 
+#endif // MAP_H
 
-
-#endif //MAP_H
