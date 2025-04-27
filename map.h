@@ -7,6 +7,8 @@
 #include "drone.h"
 #include <vector>
 #include <string>
+#include <cstdlib> // allows map to be a random size
+#include <ctime> // allows it to be seeded
 
 // Map class to manage a 2D grid and the drones placed on it
 class Map {
