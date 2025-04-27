@@ -38,7 +38,7 @@ public:
   bool display_drone_status(const std::string& name) const;
 };
 
-// Removes target from map
+
 
 
 #endif // MAP_H
