@@ -16,8 +16,6 @@ public:
         this->battery = 100;
         this->position_x = 0;
         this ->position_y = 0;
-        this->speed = 0;
-
     }
 
     explicit Drone(const std::string & string); // created constructor for new_drone in main.cpp
