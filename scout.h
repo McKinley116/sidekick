@@ -13,15 +13,13 @@ class scout_drone : public Drone {
       scout_drone(const std::string &string) : Drone(name){}
 
       void scan(){
-        if (battery > 5) {
+        if (battery_status > 5) {
           std::cout << "Scout Drone " << name << " is scanning the area at position " << position_x << "(x), " << position_y << "(y)...\n";
-          battery -= 5; // Scanning consumes battery
+          battery -= 2; // Scanning consumes less battery with the scout drone
         }else{
           std::cout << "Battery too low to scan. Please charge.\n";
         }
       }
 };
-
-
 
 #endif //SCOUT_H
