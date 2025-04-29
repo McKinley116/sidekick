@@ -26,7 +26,7 @@ public:
   Map(int width, int height);
 
   // Check if given coordinates are within the map bounds
-  bool is_within_bounds(int x, int y) const;
+ // bool is_within_bounds(int x, int y) const;
 
   // Add a new drone to the map, return true if successful, false if drone name already exists
   bool add_drone(const Drone& drone);
@@ -43,6 +43,11 @@ public:
   // Display the status of a specific drone, return true if found
   bool display_drone_status(const std::string& name) const;
 };
+
+// searches for drones
+Drone* search_drone(const std::string& name); // name is const so it does not get changed
+//sorts drone on battery level
+void sort_drones_by_battery();
 
 // generates objects on the map for the drone to find
 void generate_objects(int object_count);
