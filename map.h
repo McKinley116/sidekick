@@ -23,7 +23,8 @@ private:
 
 public:
   // Constructor to initialize a map with given dimensions
-  Map(int width, int height);
+ Map(int width, int height);
+    Map();
 
   // Check if given coordinates are within the map bounds
  // bool is_within_bounds(int x, int y) const;
@@ -42,10 +43,11 @@ public:
 
   // Display the status of a specific drone, return true if found
   bool display_drone_status(const std::string& name) const;
-};
 
-// searches for drones
-Drone* search_drone(const std::string& name); // name is const so it does not get changed
+    // searches for drones
+  Drone *search_drone(const std::string &name);
+};// name is const so it does not get changed
+
 //sorts drone on battery level
 void sort_drones_by_battery();
 
@@ -53,7 +55,7 @@ void sort_drones_by_battery();
 void generate_objects(int object_count);
 
 // checks if a position contains an object
-bool check_object(int x, int y) const;
+bool check_object(int x, int y);
 
 
 
