@@ -2,9 +2,17 @@
 // Created by Brandon McKinley on 4/18/25.
 //
 #include "map.h"
+#include <iostream>
+#include <random>
+#include <iomanip>
 
 // Constructor for the Map class
-Map::Map(int width, int height) : width(width), height(height) {}
+Map::Map() {
+    //seeds the random number generator
+    std::srand(std::time(nullptr));
+    width = std::rand() % 10 + 1;
+    height = std::rand() % 10 + 1;
+}
 
 // Check if coordinates are within map bounds
 bool Map::is_within_bounds(int x, int y) const {
