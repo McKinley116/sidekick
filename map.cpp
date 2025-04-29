@@ -28,41 +28,29 @@ bool Map::add_drone(const Drone& drone) {
     return true;
 }
 
-// Move a drone to the specified coordinates
+// Move a drone to the specified coordinates using an unordered map
 bool Map::move_drone(const std::string& name, int x, int y) {
-    for (auto& d : drones) {
-        if (d.name == nameget_name        d.move(x, y);
-            return true;
-        }
-    }
-    return false;  // Drone not found
+
 }
 
 // Charge a drone by name
 bool Map::charge_drone(const std::string& name) {
-    for (auto& d : drones) {
-        if (d.name == name) {
-  get_name  d.charge();
-            return true;
-        }
-    }
-    return false;  // Drone not found
+
 }
 
 // Display the map with drones
 void Map::display_map() const {
-    // Implementation of grid display goes here
+
 }
 
 // Display the status of a specific drone
 bool Map::display_drone_status(const std::string& name) const {
-    for (const auto& d : drones) {
-        if (d.name == name) {
-        get_nameatus();
-            return true;
-        }
+    Drone* drone = search_drone(name);
+    if (drone != nullptr) {
+        drone->status();
+        return true;
     }
-    return false;  // Drone not found
+    return false;
 }
 
 //Search for drone by name using a pointer
