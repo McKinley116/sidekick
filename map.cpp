@@ -68,3 +68,16 @@ bool Map::display_drone_status(const std::string& name) const {
     return false;  // Drone not found
 }
 
+//Search for drone by name using a pointer
+Drone* Map::search_drone(const std::string& name) {
+    auto it = drones.find(name);
+    if (it != drones.end()) {
+        return &it->second; // return a pointer to the drone
+    }
+    return nullptr;
+}
+
+// Sort drones by battery level
+
+
+
