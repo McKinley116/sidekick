@@ -13,9 +13,7 @@ class attack_drone : public Drone {
 
       void attack_target(int x, int y) {
         if (battery_status() > 20) {
-          std::cout << "Attack Drone" << get_name() << " is attacking target at position " << x << "(x), " << y << "(y)...\n";
-          //Remove target from map
-         // Map::remove_target(x, y);
+          std::cout << "Attack Drone" << get_name() << " is attacking target at position " << x << "(x), " << y << "(y)...\n"
         }else{
           std::cout << "Battery too low to attack. Please charge." << std::endl;
         }
