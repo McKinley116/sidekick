@@ -9,13 +9,15 @@
 #include <string>
 #include <cstdlib> // allows map to be a random size
 #include <ctime> // allows it to be seeded
-#include <unordered_map>
+#include <unordered_map> // sorts the drones by name
+#include <algorithm> // for sorting
 
 // Map class to manage a 2D grid and the drones placed on it
 class Map {
 private:
   int width;                   // Width of the map
   int height;                  // Height of the map
+  // Key : Drone name
   std::unordered_map<std::string, Drone> drones;   // List of drones on the map, updated to an unordered map to organize and search for drones
   std::vector<std::vector<char>> grid;  // 2D grid to display the map
 
