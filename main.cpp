@@ -35,6 +35,8 @@ int main() {
             } else {
                 std::cout << "Error: Drone with name '" << drone_name << "' already exists.\n";
             }
+
+            /*
         } else if (command == "move") {
             std::cin >> drone_name >> x >> y;
             if (map.is_within_bounds(x, y)) { // Check if coordinates are valid
@@ -45,7 +47,8 @@ int main() {
                 }
             } else {
                 std::cout << "Error: Coordinates (" << x << ", " << y << ") are out of bounds.\n";
-            }
+            } */
+
         } else if (command == "charge") {
             std::cin >> drone_name;
             if (map.charge_drone(drone_name)) {
