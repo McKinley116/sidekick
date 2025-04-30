@@ -44,8 +44,8 @@ public:
   // Display the status of a specific drone, return true if found
   bool display_drone_status(const std::string& name) const;
 
-    // searches for drones
-  Drone *search_drone(const std::string &name);
+  // searches for drones
+  bool search_drone(const std::string &name)const;
 };// name is const so it does not get changed
 
 //sorts drone on battery level

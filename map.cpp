@@ -15,7 +15,7 @@ Map::Map() {
 }
 
 // Check if coordinates are within map bounds
-//bool Map::is_within_bounds(int x, int y) const {
+// bool Map::is_within_bounds(int x, int y) const {
     //return x >= 0 && x < width && y >= 0 && y < height;
 //}
 
@@ -45,7 +45,8 @@ void Map::display_map() const {
 
 // Display the status of a specific drone
 bool Map::display_drone_status(const std::string& name) const {
-    Drone* drone = search_drone(name);
+    Drone* drone;
+    drone = search_drone(name);
     if (drone != nullptr) {
         drone->status();
         return true;
