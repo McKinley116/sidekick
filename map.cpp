@@ -2,7 +2,6 @@
 // Created by Brandon McKinley on 4/18/25.
 //
 #include "map.h"
-#include <iostream>
 #include <random>
 #include <iomanip>
 
@@ -44,24 +43,28 @@ void Map::display_map() const {
 }
 
 // Display the status of a specific drone
+/*
 bool Map::display_drone_status(const std::string& name) const {
-    Drone* drone;
-    drone = search_drone(name);
+    Drone* drone = search_drone(name);
     if (drone != nullptr) {
         drone->status();
         return true;
     }
     return false;
 }
+*/
 
 //Search for drone by name using a pointer
-Drone* Map::search_drone(const std::string& name) {
+/*
+bool Map::search_drone(const std::string& name) const {
     auto it = drones.find(name);
     if (it != drones.end()) {
         return &it->second; // return a pointer to the drone
     }
     return nullptr;
 }
+ */
+
 
 // Sort drones by battery level
 
