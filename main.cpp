@@ -17,7 +17,6 @@ int main() {
 
     // User command and inputs
     std::string command, drone_name;
-    int x, y;
 
     // Display menu
     display_menu();

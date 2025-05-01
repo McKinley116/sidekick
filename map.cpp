@@ -29,16 +29,16 @@ bool Map::add_drone(const Drone& drone) {
 
 // Move a drone to the specified coordinates using an unordered map
 bool Map::move_drone(const std::string& name, int x, int y) {
-
+    return true;
 }
 
 // Charge a drone by name
-bool Map::charge_drone(const std::string& name) {
+bool Map::charge_drone(const std::string &name) {
 
 }
 
 // Display the map with drones
-void Map::display_map() const {
+void Map::display_map() {
 
 }
 

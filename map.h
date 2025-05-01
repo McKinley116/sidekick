@@ -33,13 +33,13 @@ public:
   bool add_drone(const Drone& drone);
 
   // Move a drone to specific coordinates, return true if successful
-  bool move_drone(const std::string& name, int x, int y);
+  static bool move_drone(const std::string& name, int x, int y);
 
   // Charge the battery of a drone, return true if successful
-  bool charge_drone(const std::string& name);
+  static bool charge_drone(const std::string &name);
 
   // Display the 2D map with all existing drones
-  void display_map() const;
+  static void display_map();
 
   // Display the status of a specific drone, return true if found
   bool display_drone_status(const std::string& name) const;
