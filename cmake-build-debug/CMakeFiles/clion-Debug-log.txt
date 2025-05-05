@@ -1,1 +1,4 @@
-CMakeLists.txt not found in /Users/brandonmckinley/CLionProjects/sidekick Select CMakeLists.txt
+/Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S /Users/brandonmckinley/CLionProjects/sidekick -B /Users/brandonmckinley/CLionProjects/sidekick/cmake-build-debug
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/brandonmckinley/CLionProjects/sidekick/cmake-build-debug

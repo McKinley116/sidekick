@@ -23,7 +23,7 @@ public:
         generate_objects();
     };
 
-    void generate_map(int map_width, int map_height); // generates random map size
+    void generate_map(); // generates random map size
     void generate_objects(); // generates random number of objects for placement on map
     void display_map(); // displays map with drones
     void get_drone_count(); // give drone count
@@ -32,7 +32,7 @@ public:
     void sort_drones_by_battery(); // uses bubble sort?
 
 private:
-    std::vector<std::vector<grid_content>> map_grid; // works with enumerator to determine what is on grid
+    std::vector<std::vector<grid_content> > map_grid; // works with enumerator to determine what is on grid
     int map_width;
     int map_height;
     int drone_count;

@@ -8,4 +8,11 @@
 using namespace std;
 
 int main() {
+    map map;
+
+    map.generate_map();
+    map.generate_objects();
+    map.display_map();
+
+    return 0;
 }
