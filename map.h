@@ -4,9 +4,17 @@
 
 #ifndef MAP_H
 #define MAP_H
+#include <vector>
 
 class map {
 public:
+    //enum used for storing objects in map
+    enum grid_content
+    {
+        EMPTY = 0,
+        DRONE = 1,
+        OBJECT = 2,
+    };
 
     //Constructor that uses functions to generate the "defaults" of a new map
     map()
@@ -21,9 +29,9 @@ public:
     void get_object_count();
 
 private:
+    std::vector<std::vector<grid_content>> map_grid;
     int map_width;
     int map_height;
-    int** map_size;
     int drone_count;
     int object_count;
 };
