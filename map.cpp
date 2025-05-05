@@ -31,7 +31,10 @@ void generate_map() {
 //random generates objects for map and places them
 void map::generate_objects()
 {
-
+    std::random_device rd; // obtains seed for random engine
+    std::mt19937 gen(rd()); // random engine
+    std::uniform_int_distribution<> dis(10, 40); // distribution of random numbers, (min, max)
+    object_count = dis(gen); // sets number of objects
 }
 
 

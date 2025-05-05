@@ -27,6 +27,7 @@ public:
     void generate_objects();
     void get_drone_count();
     void get_object_count();
+    bool is_within_bounds(int x, int y) const;
     void sort_drones_by_battery(); // uses bubble sort
 
 private:
