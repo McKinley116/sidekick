@@ -1,0 +1,15 @@
+#include <iostream>
+#include "map.h"
+using namespace std;
+
+int main() {
+    cout << "Starting program..." << endl;
+
+    map gameMap;
+    gameMap.generate_map();
+    gameMap.generate_objects();
+    gameMap.display_map();
+
+    cout << "Program ending..." << endl;
+    return 0;
+}

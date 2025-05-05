@@ -11,11 +11,14 @@
 //generate map function randomly generates the map size and object placement
 void map::generate_map() {
 
+    std::cout << "Generating map..." << std::endl;
     std::random_device rd; // obtains seed for random engine
     std::mt19937 gen(rd()); // random engine
     std::uniform_int_distribution<> dis(10, 40); // distribution of random numbers, (min, max)
-    int map_width = dis(gen); // sets width
-    int map_height = dis(gen); // sets height
+    map_width = dis(gen); // sets width
+    map_height = dis(gen); // sets height
+
+    std::cout << "Generated dimensions: " << map_width << "x" << map_height << std::endl;  // Debug print
 
     if (map_width < 10 || map_height < 10) {
         std::cout << "Map size must be at least 10x10.\n";
@@ -27,12 +30,15 @@ void map::generate_map() {
     for (auto& row : grid) {
         row.resize(map_width, EMPTY);
     }
+    std::cout << "Map grid initialized" << std::endl;  // Debug print
 
 }
 
 //random generates objects for map and places them
 void map::generate_objects()
 {
+    std::cout << "Generating objects..." << std::endl;  // Debug print
+
     std::random_device rd; // obtains seed for random engine
     std::mt19937 gen(rd()); // random engine
 
@@ -64,6 +70,8 @@ void map::generate_objects()
 //display map with objects, D = drone, OB = objects, X = empty
 void map::display_map()
 {
+    std::cout << "Displaying map..." << std::endl;  // Debug print
+
     // Print top border
     std::cout << "Map Size: " << map_width << "x" << map_height << "\n";
     std::cout << "Drones: " << drone_count << " Objects: " << object_count << "\n\n";

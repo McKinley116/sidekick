@@ -18,12 +18,8 @@ public:
     };
 
     //constructor
-    map()
-    {
-        generate_map();
-        generate_objects();
-        display_map();
-    };
+    map() : map_width(0), map_height(0), drone_count(0), object_count(0) {
+    }
 
     void generate_map(); // generates random map size
     void generate_objects(); // generates random number of objects for placement on map
