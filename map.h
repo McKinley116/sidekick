@@ -23,10 +23,11 @@ public:
         generate_objects();
     };
 
-    void generate_map();
+    void generate_map(int map_width, int map_height);
     void generate_objects();
     void get_drone_count();
     void get_object_count();
+    void sort_drones_by_battery(); // uses bubble sort
 
 private:
     std::vector<std::vector<grid_content>> map_grid;
