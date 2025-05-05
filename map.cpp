@@ -13,6 +13,7 @@ void generate_map() {
     std::uniform_int_distribution<> dis(10, 40); // distribution of random numbers, (min, max)
     int map_width = dis(gen);
     int map_height = dis(gen);
+
 }
 
 // gets number on drones on map

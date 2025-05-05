@@ -6,16 +6,26 @@
 #define MAP_H
 
 class map {
+public:
 
-   private:
-    int map_width;
-    int map_height;
-    int drone_count;
-    int object_count;
+    //Constructor that uses functions to generate the "defaults" of a new map
+    map()
+    {
+        generate_map();
+        generate_objects();
+    };
+
     void generate_map();
     void generate_objects();
     void get_drone_count();
     void get_object_count();
+
+private:
+    int map_width;
+    int map_height;
+    int** map_size;
+    int drone_count;
+    int object_count;
 };
 
 
