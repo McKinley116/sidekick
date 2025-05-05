@@ -77,13 +77,14 @@ void map::display_map()
     // Print column numbers
     std::cout << "   ";  // Space for row numbers
     for (int x = 1; x < map_width; x++) {
-        std::cout << std::setw(2) << x % 10 << " ";
+        std::cout << std::setw(2) << x << " ";
     }
     std::cout << "\n";
 
+
     // Print top border
     std::cout << "   ";
-    for (int x = 0; x < map_width; x++) {
+    for (int x = 1; x < map_width; x++) {
         std::cout << "---";
     }
     std::cout << "\n";
