@@ -36,5 +36,13 @@ void map::generate_objects()
 
 
 // gets number on drones on map
+int get_drone_count()
+{
+    return drone_count;
+}
 
 // gets number of objects on the map
+int get_object_count()
+{
+    return object_count;
+}
