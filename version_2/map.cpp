@@ -18,7 +18,6 @@ void map::generate_map() {
     map_width = dis(gen); // sets width
     map_height = dis(gen); // sets height
 
-    std::cout << "Generated dimensions: " << map_width << "x" << map_height << std::endl;  // Debug print
 
     if (map_width < 10 || map_height < 10) {
         std::cout << "Map size must be at least 10x10.\n";
@@ -70,7 +69,6 @@ void map::generate_objects()
 //display map with objects, D = drone, OB = objects, X = empty
 void map::display_map()
 {
-    std::cout << "Displaying map..." << std::endl;  // Debug print
 
     // Print top border
     std::cout << "Map Size: " << map_width << "x" << map_height << "\n";
@@ -78,7 +76,7 @@ void map::display_map()
 
     // Print column numbers
     std::cout << "   ";  // Space for row numbers
-    for (int x = 0; x < map_width; x++) {
+    for (int x = 1; x < map_width; x++) {
         std::cout << std::setw(2) << x % 10 << " ";
     }
     std::cout << "\n";
@@ -91,7 +89,7 @@ void map::display_map()
     std::cout << "\n";
 
     // Print grid with row numbers
-    for (int y = 0; y < map_height; y++) {
+    for (int y = 1; y < map_height; y++) {
         std::cout << std::setw(2) << y << "|";
         for (int x = 0; x < map_width; x++) {
             char symbol;

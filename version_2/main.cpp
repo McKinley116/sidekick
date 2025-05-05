@@ -10,6 +10,6 @@ int main() {
     gameMap.generate_objects();
     gameMap.display_map();
 
-    cout << "Program ending..." << endl;
+
     return 0;
 }
