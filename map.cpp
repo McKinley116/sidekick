@@ -38,14 +38,79 @@ void map::generate_objects()
     object_count = total_cells / 10; // sets number of objects to be 10% of total cells
 
     std::uniform_int_distribution<> width_distribution(0, map_width - 1); // distribution of random numbers, (min, max)  for width
-    std::uniform_int_distribution<> heigt_distribution(0, map_height -1 ); // distribution of random numbers, (min, max) for height
+    std::uniform_int_distribution<> height_distribution(0, map_height -1 ); // distribution of random numbers, (min, max) for height
 
     int placed_objects = 0; // keeps track of how many objects have been placed
     int max_attempts = total_cells * 2; // sets max attempts to avoid inf loops
     int attempts = 0; // keeps track of attempts
 
+    while (placed_objects < object_count && attempts < max_attempts) {
+        int x = width_distribution(gen); // gets random x coordinate
+        int y = height_distribution(gen); // gets random y coordinate
+
+        // checks if a cell is empty, pulls from enumerator
+        if (grid[y][x] == EMPTY) {
+            grid[y][x] = OBJECT;
+            placed_objects++;
+        }
+        attempts++;
+    }
+
+    object_count = placed_objects; // sets number of objects to be the number of objects placed
 }
 
+//display map with objects, D = drone, OB = objects, X = empty
+void display_map()
+{
+    // Print top border
+    std::cout << "Map Size: " << map_width << "x" << map_height << "\n";
+    std::cout << "Drones: " << drone_count << " Objects: " << object_count << "\n\n";
+
+    // Print column numbers
+    std::cout << "   ";  // Space for row numbers
+    for (int x = 0; x < map_width; x++) {
+        std::cout << std::setw(2) << x % 10 << " ";
+    }
+    std::cout << "\n";
+
+    // Print top border
+    std::cout << "   ";
+    for (int x = 0; x < map_width; x++) {
+        std::cout << "---";
+    }
+    std::cout << "\n";
+
+    // Print grid with row numbers
+    for (int y = 0; y < map_height; y++) {
+        std::cout << std::setw(2) << y << "|";
+        for (int x = 0; x < map_width; x++) {
+            char symbol;
+            switch (grid[y][x]) {
+            case EMPTY:
+                symbol = '.';
+                break;
+            case DRONE:
+                symbol = 'D';
+                break;
+            case OBJECT:
+                symbol = 'O';
+                break;
+            default:
+                symbol = '?';
+            }
+            std::cout << " " << symbol << " ";
+        }
+        std::cout << "|\n";
+    }
+
+    // Print bottom border
+    std::cout << "   ";
+    for (int x = 0; x < map_width; x++) {
+        std::cout << "---";
+    }
+    std::cout << "\n";
+
+}
 
 // gets number on drones on map
 int get_drone_count()

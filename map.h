@@ -25,13 +25,14 @@ public:
 
     void generate_map(int map_width, int map_height); // generates random map size
     void generate_objects(); // generates random number of objects for placement on map
+    void display_map(); // displays map with drones
     void get_drone_count(); // give drone count
     void get_object_count(); // gives object count
     bool is_within_bounds(int x, int y) const; // checks if object or drone in bounds of map for placement
-    void sort_drones_by_battery(); // uses bubble sort
+    void sort_drones_by_battery(); // uses bubble sort?
 
 private:
-    std::vector<std::vector<grid_content>> map_grid;
+    std::vector<std::vector<grid_content>> map_grid; // works with enumerator to determine what is on grid
     int map_width;
     int map_height;
     int drone_count;
