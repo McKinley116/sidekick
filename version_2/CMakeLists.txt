@@ -11,8 +11,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Specifies the executable name and source files
 add_executable(sidekick
-       version_2/main.cpp
-        version_2/map.cpp
+       main.cpp
+        map.cpp
 
 )
 
