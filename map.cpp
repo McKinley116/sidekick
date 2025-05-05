@@ -33,8 +33,17 @@ void map::generate_objects()
 {
     std::random_device rd; // obtains seed for random engine
     std::mt19937 gen(rd()); // random engine
-    std::uniform_int_distribution<> dis(10, 40); // distribution of random numbers, (min, max)
-    object_count = dis(gen); // sets number of objects
+
+    int total_cells = map_width * map_height; // helps divide up the map so that the entire map is not only objects
+    object_count = total_cells / 10; // sets number of objects to be 10% of total cells
+
+    std::uniform_int_distribution<> width_distribution(0, map_width - 1); // distribution of random numbers, (min, max)  for width
+    std::uniform_int_distribution<> heigt_distribution(0, map_height -1 ); // distribution of random numbers, (min, max) for height
+
+    int placed_objects = 0; // keeps track of how many objects have been placed
+    int max_attempts = total_cells * 2; // sets max attempts to avoid inf loops
+    int attempts = 0; // keeps track of attempts
+
 }
 
 
