@@ -1,25 +1,27 @@
+# Sets minimum version of CMake required
 cmake_minimum_required(VERSION 3.10)
 
-project(drone_map VERSION 1.0 LANGUAGES CXX)
+# Defines project name, version, and languages used
+project(sidekick VERSION 1.0 LANGUAGES CXX)
 
-# Set C++ standard to C++11 (needed for random)
+# Sets C++ standard to C++11
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Add executable with all source files
+# Specifies the executable name and source files
 add_executable(drone_map
         main.cpp
         map.cpp
         map.h
 )
 
-# Compiler warnings
+# Adds compiler warnings based on compiler type
 if(MSVC)
     target_compile_options(drone_map PRIVATE /W4)
 else()
     target_compile_options(drone_map PRIVATE -Wall -Wextra)
 endif()
 
-# Include directories
+# Sets include directories
 target_include_directories(drone_map PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

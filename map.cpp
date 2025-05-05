@@ -3,17 +3,19 @@
 //Version 2
 
 #include "map.h"
+#include <vector>
 #include <random>
 #include <iostream>
+#include <iomanip>
 
 //generate map function randomly generates the map size and object placement
-void generate_map() {
+void map::generate_map() {
 
     std::random_device rd; // obtains seed for random engine
     std::mt19937 gen(rd()); // random engine
     std::uniform_int_distribution<> dis(10, 40); // distribution of random numbers, (min, max)
-    map_width = dis(gen); // sets width
-    map_height = dis(gen); // sets height
+    int map_width = dis(gen); // sets width
+    int map_height = dis(gen); // sets height
 
     if (map_width < 10 || map_height < 10) {
         std::cout << "Map size must be at least 10x10.\n";
@@ -60,7 +62,7 @@ void map::generate_objects()
 }
 
 //display map with objects, D = drone, OB = objects, X = empty
-void display_map()
+void map::display_map()
 {
     // Print top border
     std::cout << "Map Size: " << map_width << "x" << map_height << "\n";
@@ -113,13 +115,13 @@ void display_map()
 }
 
 // gets number on drones on map
-int get_drone_count()
+int map::get_drone_count() const
 {
     return drone_count;
 }
 
 // gets number of objects on the map
-int get_object_count()
+int map::get_object_count() const
 {
     return object_count;
 }

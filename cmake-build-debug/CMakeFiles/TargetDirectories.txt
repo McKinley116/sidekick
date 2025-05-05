@@ -1,3 +1,3 @@
-/Users/brandonmckinley/CLionProjects/sidekick/cmake-build-debug/CMakeFiles/sidekick.dir
+/Users/brandonmckinley/CLionProjects/sidekick/cmake-build-debug/CMakeFiles/drone_map.dir
 /Users/brandonmckinley/CLionProjects/sidekick/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/brandonmckinley/CLionProjects/sidekick/cmake-build-debug/CMakeFiles/rebuild_cache.dir
