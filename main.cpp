@@ -3,6 +3,8 @@
 //Version 2
 
 #include <iostream>
+#include "drone.h"
+#include "map.h"
 using namespace std;
 
 int main() {
