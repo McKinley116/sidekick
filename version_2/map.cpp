@@ -66,9 +66,15 @@ void map::generate_objects()
     object_count = placed_objects; // sets number of objects to be the number of objects placed
 }
 
+bool map::is_within_bounds(int x, int y) const
+{
+    return (x >= 0 && x < map_width && y >= 0 && y < map_height)
+}
+
+
 void place_drone(int x, int y)
 {
-
+    // needs to check map for where objects are and make sure drone can be place within bounds
 }
 
 //display map with objects, D = drone, OB = objects, X = empty
