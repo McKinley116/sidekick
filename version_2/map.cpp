@@ -78,7 +78,7 @@ void place_drone(int x, int y)
 }
 
 //display map with objects, D = drone, OB = objects, X = empty
-void map::display_map()
+void map::display_map() const
 {
 
     // Print top border
