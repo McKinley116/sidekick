@@ -121,7 +121,7 @@ void map::display_map()
 
 }
 
-// gets number on drones on map
+// gets number of drones on map
 int map::get_drone_count() const
 {
     return drone_count;
