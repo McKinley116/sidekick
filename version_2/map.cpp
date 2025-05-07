@@ -68,7 +68,7 @@ void map::generate_objects()
 
 bool map::is_within_bounds(int x, int y) const
 {
-    return (x >= 0 && x < map_width && y >= 0 && y < map_height)
+    return (x >= 0 && x < map_width && y >= 0 && y < map_height);
 }
 
 
