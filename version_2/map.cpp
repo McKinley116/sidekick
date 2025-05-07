@@ -66,6 +66,11 @@ void map::generate_objects()
     object_count = placed_objects; // sets number of objects to be the number of objects placed
 }
 
+void place_drone(int x, int y)
+{
+
+}
+
 //display map with objects, D = drone, OB = objects, X = empty
 void map::display_map()
 {
