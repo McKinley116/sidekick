@@ -13,6 +13,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_executable(sidekick
        main.cpp
         map.cpp
+        drone.cpp
 
 )
 
