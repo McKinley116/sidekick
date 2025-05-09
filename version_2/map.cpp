@@ -94,6 +94,10 @@ void map::place_drone(int x, int y)
 
     grid[x][y] = DRONE;
     drone_count++;
+    drone* new_drone = new drone("Drone" + std::to_string(drone_count), drone_count);
+    new_drone->set_position(x, y);
+    drones.push_back(new_drone);
+    std::cout << "Drone placed at (" << x << ", " << y << ").\n";
 }
 
 //display map with objects, D = drone, OB = objects, X = empty
