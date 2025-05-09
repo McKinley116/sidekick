@@ -28,7 +28,7 @@ public:
     int get_drone_count() const; // give drone count
     int get_object_count() const; // gives object count
     bool is_within_bounds(int x, int y) const; // checks if object or drone in bounds of map for placement
-    void sort_drones_by_battery(); // uses bubble sort?
+    void sort_drones_by_battery(); // uses bubble sort? works with drone vector or array?
 
 private:
     std::vector<std::vector<grid_content> > grid; // works with enumerator to determine what is on grid

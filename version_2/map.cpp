@@ -72,9 +72,28 @@ bool map::is_within_bounds(int x, int y) const
 }
 
 
-void place_drone(int x, int y)
+void map::place_drone(int x, int y)
 {
     // needs to check map for where objects are and make sure drone can be place within bounds
+    if (!is_within_bounds(x, y)) {
+        std::cout << "Error: Position (" << x << ", " << y << ") is outside map bounds.\n";
+        return;
+    }
+
+    if (grid[x][y] == OBJECT)
+    {
+        std::cout << "Error: Position (" << x << ", " << y << ") is occupied by an OBJECT.\n";
+        return;
+    }
+
+    if (grid[x][y] == DRONE)
+    {
+        std::cout << "Error: Position (" << x << ", " << y << ") is occupied by an DRONE.\n";
+        return;
+    }
+
+    grid[x][y] = DRONE;
+    drone_count++;
 }
 
 //display map with objects, D = drone, OB = objects, X = empty
