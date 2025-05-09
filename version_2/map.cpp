@@ -90,11 +90,11 @@ bool map::add_drone(int x, int y, drone* new_drone) {
     grid[y][x] = DRONE;
     
     // Update drone's position and add to drones vector
-    new_drone->set_position(x, y);  // Ensure position is set
+    new_drone->set_position(x, y);
     drones.push_back(new_drone);
     drone_count++;
     
-    std::cout << "Drone " << new_drone->get_name() << " (ID: " << new_drone->get_id() 
+    std::cout << "Drone \"" << new_drone->get_name() << "\" (ID: " << new_drone->get_id() 
               << ") successfully placed at position (" << x << ", " << y << ")\n";
               
     return true;

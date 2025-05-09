@@ -70,11 +70,16 @@ void user_menu::handle_move_drone() {
         std::cout << "Enter new Y coordinate: ";
         std::cin >> newY;
         
+        // Store all drone properties including name
+        std::string droneName = selectedDrone->get_name();
+        int droneID = selectedDrone->get_id();
+        
         // Remove drone from old position
         gameMap.remove_drone(droneId);
         
         // Create new drone with same properties
-        drone* movedDrone = new drone(selectedDrone->get_name(), selectedDrone->get_id());
+        drone* movedDrone = new drone(droneName, droneID);  // Pass the stored name
+        movedDrone->set_position(newX, newY);
         
         // Try to add drone at new position
         if (gameMap.add_drone(newX, newY, movedDrone)) {
@@ -82,7 +87,7 @@ void user_menu::handle_move_drone() {
             gameMap.display_map();
         } else {
             std::cout << "Failed to move drone - invalid position\n";
-            delete movedDrone;  // Clean up if move fails
+            delete movedDrone;
         }
     } else {
         std::cout << "Drone not found!\n";
