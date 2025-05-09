@@ -21,6 +21,9 @@ public:
     int get_id();
     int get_battery();
     void get_position();
+    
+    int get_position_x() const { return position_x; }
+    int get_position_y() const { return position_y; }
 
 private:
     std::string name;

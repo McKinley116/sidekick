@@ -1,26 +1,18 @@
-//
-// Created by Brandon McKinley on 5/9/25.
-//
-
 #ifndef USER_MENU_H
 #define USER_MENU_H
 
 #include "map.h"
-#include "drone.h""
+#include "drone.h"  // Removed extra quote
 #include <iostream>
 
 class user_menu {
 public:
-    // Constructor that takes a reference to the map
     user_menu(map& gameMap) : gameMap(gameMap) {}
-
-    // Main menu loop
     void run_menu();
 
 private:
-    map& gameMap;  // Reference to the game map
+    map& gameMap;
 
-    // Menu helper functions
     void display_menu() const;
     void handle_add_drone();
     void handle_move_drone();

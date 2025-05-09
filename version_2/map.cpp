@@ -90,7 +90,7 @@ bool map::add_drone(int x, int y, drone* new_drone) {
     grid[y][x] = DRONE;
     
     // Update drone's position and add to drones vector
-    new_drone->set_position(x, y);
+    new_drone->set_position(x, y);  // Ensure position is set
     drones.push_back(new_drone);
     drone_count++;
     
@@ -100,19 +100,23 @@ bool map::add_drone(int x, int y, drone* new_drone) {
     return true;
 }
 
-void map::remove_drone(int drone_id)
-{
-    for (int i = 0; i < drones.size(); i++)
-    {
-        if (drones[i]->get_id() == drone_id)
-        {
+void map::remove_drone(int drone_id) {
+    for (size_t i = 0; i < drones.size(); i++) {
+        if (drones[i]->get_id() == drone_id) {
+            // Clear the grid position
+            int x, y;
+            x = drones[i]->get_position_x();  // Add these getter methods to drone class
+            y = drones[i]->get_position_y();
+            grid[y][x] = EMPTY;
+            
+            // Remove from vector
+            delete drones[i];
             drones.erase(drones.begin() + i);
             drone_count--;
             std::cout << "Drone " << drone_id << " removed from the map.\n";
             return;
         }
     }
-
     std::cout << "Error: Drone with ID " << drone_id << " not found.\n";
 }
 
@@ -138,37 +142,36 @@ void map::display_map() const
     std::cout << "Drones: " << drone_count << " Objects: " << object_count << "\n\n";
 
     // Print column numbers
-    std::cout << "   ";  // Space for row numbers
-    for (int x = 1; x < map_width; x++) {
+    std::cout << "   ";
+    for (int x = 0; x < map_width; x++) {  // Changed to start from 0
         std::cout << std::setw(2) << x << " ";
     }
     std::cout << "\n";
 
-
     // Print top border
     std::cout << "   ";
-    for (int x = 1; x < map_width; x++) {
+    for (int x = 0; x < map_width; x++) {  // Changed to match width
         std::cout << "---";
     }
     std::cout << "\n";
 
     // Print grid with row numbers
-    for (int y = 1; y < map_height; y++) {
+    for (int y = 0; y < map_height; y++) {  // Changed to start from 0
         std::cout << std::setw(2) << y << "|";
         for (int x = 0; x < map_width; x++) {
             char symbol;
             switch (grid[y][x]) {
-            case EMPTY:
-                symbol = '.';
-                break;
-            case DRONE:
-                symbol = 'D';
-                break;
-            case OBJECT:
-                symbol = 'O';
-                break;
-            default:
-                symbol = '?';
+                case EMPTY:
+                    symbol = '.';
+                    break;
+                case DRONE:
+                    symbol = 'D';
+                    break;
+                case OBJECT:
+                    symbol = 'O';
+                    break;
+                default:
+                    symbol = '?';
             }
             std::cout << " " << symbol << " ";
         }
@@ -196,13 +199,11 @@ int map::get_object_count() const
     return object_count;
 }
 
-bool is_id_taken() const
-{
-    for (const auto& drone : drone) {
-        if (drone->get_id() == id) {
+bool map::is_id_taken(int id) const {
+    for (const auto& d : drones) {
+        if (d->get_id() == id) {
             return true;
         }
     }
     return false;
-
 }
