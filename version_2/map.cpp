@@ -72,32 +72,38 @@ bool map::is_within_bounds(int x, int y) const
 }
 
 
-void map::place_drone(int x, int y)
+bool map::add_drone(drone& new_drone, int x, int y)
 {
     // needs to check map for where objects are and make sure drone can be place within bounds
     if (!is_within_bounds(x, y)) {
         std::cout << "Error: Position (" << x << ", " << y << ") is outside map bounds.\n";
-        return;
+        return false;
     }
 
     if (grid[x][y] == OBJECT)
     {
         std::cout << "Error: Position (" << x << ", " << y << ") is occupied by an OBJECT.\n";
-        return;
+        return false;
     }
 
     if (grid[x][y] == DRONE)
     {
         std::cout << "Error: Position (" << x << ", " << y << ") is occupied by an DRONE.\n";
-        return;
+        return false;
     }
 
     grid[x][y] = DRONE;
-    drone_count++;
-    drone* new_drone = new drone("Drone" + std::to_string(drone_count), drone_count);
-    new_drone->set_position(x, y);
+
+    //store drone pointer and update position
+    drone* new_drone = new drone("Drone_" + std::to_string(drone_count), drone_count);
+    new_drone->set_position(x,y);
     drones.push_back(new_drone);
-    std::cout << "Drone placed at (" << x << ", " << y << ").\n";
+    drone_count++;
+    std::cout << "Drone " << new_drone->get_name() << " (ID: " << new_drone->get_id()
+               << ") successfully placed at position (" << x << ", " << y << ")\n";
+
+    return true;
+
 }
 
 //display map with objects, D = drone, OB = objects, X = empty

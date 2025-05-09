@@ -25,7 +25,6 @@ public:
 
     void generate_map(); // generates random map size
     void generate_objects(); // generates random number of objects for placement on map
-    void place_drone(int x, int y); // places drone on map
     void display_map() const; // displays map with drones
     int get_drone_count() const; // give drone count
     int get_object_count() const; // gives object count
