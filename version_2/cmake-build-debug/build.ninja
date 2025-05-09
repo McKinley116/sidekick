@@ -70,6 +70,13 @@ build CMakeFiles/sidekick.dir/drone.cpp.o: CXX_COMPILER__sidekick_unscanned_Debu
   OBJECT_DIR = CMakeFiles/sidekick.dir
   OBJECT_FILE_DIR = CMakeFiles/sidekick.dir
 
+build CMakeFiles/sidekick.dir/user_menu.cpp.o: CXX_COMPILER__sidekick_unscanned_Debug /Users/brandonmckinley/CLionProjects/sidekick/version_2/user_menu.cpp || cmake_object_order_depends_target_sidekick
+  DEP_FILE = CMakeFiles/sidekick.dir/user_menu.cpp.o.d
+  FLAGS = -g -std=c++11 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -Wall -Wextra
+  INCLUDES = -I/Users/brandonmckinley/CLionProjects/sidekick/version_2/..
+  OBJECT_DIR = CMakeFiles/sidekick.dir
+  OBJECT_FILE_DIR = CMakeFiles/sidekick.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target sidekick
@@ -78,7 +85,7 @@ build CMakeFiles/sidekick.dir/drone.cpp.o: CXX_COMPILER__sidekick_unscanned_Debu
 #############################################
 # Link the executable sidekick
 
-build sidekick: CXX_EXECUTABLE_LINKER__sidekick_Debug CMakeFiles/sidekick.dir/main.cpp.o CMakeFiles/sidekick.dir/map.cpp.o CMakeFiles/sidekick.dir/drone.cpp.o
+build sidekick: CXX_EXECUTABLE_LINKER__sidekick_Debug CMakeFiles/sidekick.dir/main.cpp.o CMakeFiles/sidekick.dir/map.cpp.o CMakeFiles/sidekick.dir/drone.cpp.o CMakeFiles/sidekick.dir/user_menu.cpp.o
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
   OBJECT_DIR = CMakeFiles/sidekick.dir
   POST_BUILD = :

@@ -73,36 +73,30 @@ bool map::is_within_bounds(int x, int y) const
 }
 
 
-bool map::add_drone(int x, int y)
-{
-    // needs to check map for where objects are and make sure drone can be place within bounds
+bool map::add_drone(int x, int y, drone* new_drone) {
+    // Check if position is within bounds
     if (!is_within_bounds(x, y)) {
         std::cout << "Error: Position (" << x << ", " << y << ") is outside map bounds.\n";
         return false;
     }
 
-    if (grid[x][y] == OBJECT)
-    {
-        std::cout << "Error: Position (" << x << ", " << y << ") is occupied by an OBJECT.\n";
+    // Check if position is occupied
+    if (grid[y][x] == OBJECT || grid[y][x] == DRONE) {
+        std::cout << "Error: Position (" << x << ", " << y << ") is occupied.\n";
         return false;
     }
 
-    if (grid[x][y] == DRONE)
-    {
-        std::cout << "Error: Position (" << x << ", " << y << ") is occupied by an DRONE.\n";
-        return false;
-    }
-
-    grid[x][y] = DRONE;
-
-    //store drone pointer and update position
-    drone* new_drone = new drone("Drone_" + std::to_string(drone_count), drone_count);
-    new_drone->set_position(x,y);
+    // Place the drone on the grid
+    grid[y][x] = DRONE;
+    
+    // Update drone's position and add to drones vector
+    new_drone->set_position(x, y);
     drones.push_back(new_drone);
     drone_count++;
-    std::cout << "Drone " << new_drone->get_name() << " (ID: " << new_drone->get_id()
-               << ") successfully placed at position (" << x << ", " << y << ")\n";
-
+    
+    std::cout << "Drone " << new_drone->get_name() << " (ID: " << new_drone->get_id() 
+              << ") successfully placed at position (" << x << ", " << y << ")\n";
+              
     return true;
 }
 
@@ -200,4 +194,15 @@ int map::get_drone_count() const
 int map::get_object_count() const
 {
     return object_count;
+}
+
+bool is_id_taken() const
+{
+    for (const auto& drone : drone) {
+        if (drone->get_id() == id) {
+            return true;
+        }
+    }
+    return false;
+
 }

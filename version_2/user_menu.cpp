@@ -22,15 +22,39 @@ void user_menu::clear_input_buffer() const {
 }
 
 void user_menu::handle_add_drone() {
-    int x, y;
+    std::string name;
+    int id, x, y;
+    
+    // Get drone name
+    std::cout << "Enter drone name: ";
+    clear_input_buffer();
+    std::getline(std::cin, name);
+    
+    // Get drone ID and validate it
+    std::cout << "Enter drone ID: ";
+    std::cin >> id;
+    
+    // Keep asking for a new ID if the current one is taken
+    while (gameMap.is_id_taken(id)) {
+        std::cout << "ID " << id << " is already taken. Please enter a different ID: ";
+        std::cin >> id;
+    }
+    
+    // Get coordinates
     std::cout << "Enter X coordinate for drone: ";
     std::cin >> x;
     std::cout << "Enter Y coordinate for drone: ";
     std::cin >> y;
-
-    if (gameMap.add_drone(x, y)) {
+    
+    // Create new drone with user-provided name and ID
+    drone* new_drone = new drone(name, id);
+    
+    if (gameMap.add_drone(x, y, new_drone)) {
         std::cout << "Drone added successfully!\n";
         gameMap.display_map();
+    } else {
+        delete new_drone;  // Clean up if addition fails
+        std::cout << "Failed to add drone. Please try again.\n";
     }
 }
 
