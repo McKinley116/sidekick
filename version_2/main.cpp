@@ -1,5 +1,6 @@
 #include <iostream>
 #include "map.h"
+#include "drone.h"
 using namespace std;
 
 int main() {
