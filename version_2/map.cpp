@@ -3,6 +3,7 @@
 //Version 2
 
 #include "map.h"
+#include "drone.h"
 #include <vector>
 #include <random>
 #include <iostream>
@@ -72,7 +73,7 @@ bool map::is_within_bounds(int x, int y) const
 }
 
 
-bool map::add_drone(drone& new_drone, int x, int y)
+bool map::add_drone(int x, int y)
 {
     // needs to check map for where objects are and make sure drone can be place within bounds
     if (!is_within_bounds(x, y)) {
@@ -103,7 +104,35 @@ bool map::add_drone(drone& new_drone, int x, int y)
                << ") successfully placed at position (" << x << ", " << y << ")\n";
 
     return true;
+}
 
+void map::remove_drone(int drone_id)
+{
+    for (int i = 0; i < drones.size(); i++)
+    {
+        if (drones[i]->get_id() == drone_id)
+        {
+            drones.erase(drones.begin() + i);
+            drone_count--;
+            std::cout << "Drone " << drone_id << " removed from the map.\n";
+            return;
+        }
+    }
+
+    std::cout << "Error: Drone with ID " << drone_id << " not found.\n";
+}
+
+drone* map::get_drone(int id)
+{
+    for (int i = 0; i < drones.size(); i++)
+    {
+        if (drones[i]->get_id() == id)
+        {
+            return drones[i];
+        }
+    }
+
+    return nullptr;
 }
 
 //display map with objects, D = drone, OB = objects, X = empty

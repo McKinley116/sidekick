@@ -30,7 +30,7 @@ public:
     int get_object_count() const; // gives object count
     bool is_within_bounds(int x, int y) const; // checks if object or drone in bounds of map for placement
     void sort_drones_by_battery(); // uses bubble sort? works with drone vector or array?
-    bool add_drone(drone& new_drone, int x, int y); // adds drone by reference and position
+    bool add_drone(int x, int y); // adds drone by reference and position
     void remove_drone(int drone_id); // removes drone based on id, which is specific
     drone* get_drone(int id); // gives drone id through reference without changing anything
 
