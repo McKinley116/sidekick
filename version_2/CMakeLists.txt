@@ -14,6 +14,7 @@ add_executable(sidekick
        main.cpp
         map.cpp
         drone.cpp
+        user_menu.cpp
 
 )
 

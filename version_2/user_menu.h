@@ -5,7 +5,9 @@
 #ifndef USER_MENU_H
 #define USER_MENU_H
 
-
+#include "map.h"
+#include "drone.h""
+#include <iostream>
 
 class user_menu {
 public:
@@ -26,9 +28,5 @@ private:
     void handle_show_drone_info();
     void clear_input_buffer() const;
 };
-
-};
-
-
 
 #endif //USER_MENU_H
