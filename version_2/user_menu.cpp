@@ -96,6 +96,27 @@ void user_menu::handle_drone_commands() const
         std::cout << "Drone not found!\n";
     }
 
+    if (!selected_drone) {
+        std::cout << "Drone not found!\n";
+        return;
+    }
+
+    std::cout << "\nDrone Type: " << selected_drone->get_drone_type() << "\n";
+    std::cout << "Available Commands:\n";
+
+    if (strcmp(selected_drone->get_drone_type(), "Scout") == 0)
+    {
+        auto* scout_drone = static_cast<scout*>(selected_drone);
+        std::cout << "1. Scan target\n";
+        std::cout << "2. Check scan charges\n";
+    }
+
+    else if (strcmp(selected_drone->get_drone_type(), "Fighter") == 0)
+    {
+        auto* fighter_drone = static_cast<fighter*>(selected_drone);
+        std::cout << "1. Fire missile\n";
+        std::cout << "2. Check missile count\n";
+    }
 
 
 }
