@@ -52,7 +52,14 @@ void user_menu::handle_add_drone() {
     std::cin >> x;
     std::cout << "Enter Y coordinate for drone: ";
     std::cin >> y;
-    
+
+    // Get drone type
+    std::cout << "\nSelect drone type:\n";
+    std::cout << "1. Scout Drone\n";
+    std::cout << "2. Fighter Drone\n";
+    std::cout << "Enter your choice (1-2): ";
+    std::cin >> type;
+
     // Create new drone with user-provided name and ID
     drone* new_drone = nullptr;
     switch(type) {
@@ -235,7 +242,12 @@ void user_menu::run_menu() {
                 handle_show_drone_info();
                 break;
 
-            case 6:
+             case 6:
+                handle_drone_commands();
+                break;
+
+
+            case 7:
                 running = false;
                 std::cout << "Exiting program...\n";
                 break;
