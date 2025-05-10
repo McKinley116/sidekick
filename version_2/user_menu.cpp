@@ -3,6 +3,12 @@
 //
 
 #include "user_menu.h"
+#include "scout.h"
+#include "fighter.h"
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
 #include <limits>
 
 void user_menu::display_menu() const {
@@ -57,6 +63,8 @@ void user_menu::handle_add_drone() {
         std::cout << "Failed to add drone. Please try again.\n";
     }
 }
+
+void user_menu::handle_drone_commands() const {
 
 void user_menu::handle_move_drone() {
     int droneId, newX, newY;
