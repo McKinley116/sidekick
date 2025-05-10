@@ -21,6 +21,7 @@ public:
     int get_position_x() const { return position_x; }
     int get_position_y() const { return position_y; }
     void move(int x, int y);
+    std::pair<int, int> get_position() const;
 
 protected:
     std::string name;

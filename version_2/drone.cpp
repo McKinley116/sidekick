@@ -19,3 +19,7 @@ void drone::move(int x, int y) {
     position_x = x;
     position_y = y;
 }
+
+std::pair<int, int> drone::get_position() const {
+    return std::make_pair(position_x, position_y);
+}
