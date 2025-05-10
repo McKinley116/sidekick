@@ -30,6 +30,14 @@ void map::generate_map() {
     for (auto& row : grid) {
         row.resize(map_width, EMPTY);
     }
+
+    object_types.resize(map_height);
+    scanned_objects.resize(map_height);
+    for (int i = 0; i < map_height; i++) {
+        object_types[i].resize(map_width);
+        scanned_objects[i].resize(map_width, false);
+    }
+
     std::cout << "Map grid initialized" << std::endl;  // Debug print
 
 }
