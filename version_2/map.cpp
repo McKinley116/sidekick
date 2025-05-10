@@ -134,29 +134,28 @@ drone* map::get_drone(int id)
 }
 
 //display map with objects, D = drone, OB = objects, X = empty
-void map::display_map() const
-{
-
+void map::display_map() const {
     // Print top border
     std::cout << "Map Size: " << map_width << "x" << map_height << "\n";
-    std::cout << "Drones: " << drone_count << " Objects: " << object_count << "\n\n";
+    std::cout << "Drones: " << drone_count << " Objects: " << object_count << "\n";
+    std::cout << "Legend: D=Drone, O=Unknown Object, E=Enemy Drone, B=Building, X=Blockade\n\n";
 
     // Print column numbers
     std::cout << "   ";
-    for (int x = 0; x < map_width; x++) {  // Changed to start from 0
+    for (int x = 0; x < map_width; x++) {
         std::cout << std::setw(2) << x << " ";
     }
     std::cout << "\n";
 
     // Print top border
     std::cout << "   ";
-    for (int x = 0; x < map_width; x++) {  // Changed to match width
+    for (int x = 0; x < map_width; x++) {
         std::cout << "---";
     }
     std::cout << "\n";
 
     // Print grid with row numbers
-    for (int y = 0; y < map_height; y++) {  // Changed to start from 0
+    for (int y = 0; y < map_height; y++) {
         std::cout << std::setw(2) << y << "|";
         for (int x = 0; x < map_width; x++) {
             char symbol;
@@ -168,7 +167,21 @@ void map::display_map() const
                     symbol = 'D';
                     break;
                 case OBJECT:
-                    symbol = 'O';
+                    if (is_object_scanned(x, y)) {
+                        switch (get_object_type(x, y)) {
+                            case ENEMY_DRONE:
+                                symbol = 'E';
+                                break;
+                            case BUILDING:
+                                symbol = 'B';
+                                break;
+                            case BLOCKADE:
+                                symbol = 'X';
+                                break;
+                        }
+                    } else {
+                        symbol = 'O';
+                    }
                     break;
                 default:
                     symbol = '?';
@@ -184,7 +197,6 @@ void map::display_map() const
         std::cout << "---";
     }
     std::cout << "\n";
-
 }
 
 // gets number of drones on map
