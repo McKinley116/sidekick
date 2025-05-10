@@ -27,7 +27,10 @@ public:
 
     //constructor
     map() : map_width(0), map_height(0), drone_count(0), object_count(0) {
-    }
+    // Initialize vectors in constructor
+    object_types.clear();
+    scanned_objects.clear();
+}
 
     void generate_map(); // generates random map size
     void generate_objects(); // generates random number of objects for placement on map
