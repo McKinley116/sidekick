@@ -4,13 +4,15 @@
 
 #ifndef SCOUT_H
 #define SCOUT_H
+#include "map.h"
 #include <string>
+#include "drone.h"
 
 
 // This class inherites from the drone class, and has its own function that allows it to determine what an object that is scaned and gather data on it
 class scout : public drone {
 
-    scout (const std::string &name, int id)
+    scout (const std::string &name, int id, map& gameMap) : drone(name, id), gameMap(gameMap)
     {
         vision_range = 6;
         scan_charges = 10;
