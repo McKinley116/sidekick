@@ -6,7 +6,7 @@
 #define FIGHTER_H
 #include <string>
 #include "drone.h"
-
+#include "map.h"
 
 // This class inherites from the drone class, and has its own function that allows it to remove/ destroy objects that block a grid coordinate
 class fighter : public drone {
