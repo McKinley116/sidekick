@@ -26,5 +26,26 @@ void scout::scan_target(int x, int y)
     std::cout << "Scanning target at (" << x << ", " << y << ")..." << std::endl;
     std::cout << "Scan charges left: " << scan_charges << std::endl;
 
+    if (gameMap.grid[x][y] == map::EMPTY)
+    {
+        int object_type = dis(gen);
 
+        switch (object_type)
+        {
+        case 0:
+            std::cout << "Detected: Enemy Drone!\n";
+            break;
+        case 1:
+            std::cout << "Detected: Building\n";
+            break;
+        case 2:
+            std::cout << "Detected: Blockade\n";
+            break;
+
+        }
+    }
+    else if (gameMap.grid[y][x] == map::DRONE)
+    {
+        std::cout << "Detected: Friendly Drone\n";
+    }
 }

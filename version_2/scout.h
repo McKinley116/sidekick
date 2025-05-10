@@ -25,6 +25,7 @@ class scout : public drone {
 private:
     int vision_range;
     int scan_charges;
+    map& gameMap; // references to the map.cpp/.h
 };
 
 

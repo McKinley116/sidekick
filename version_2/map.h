@@ -5,7 +5,6 @@
 #ifndef MAP_H
 #define MAP_H
 #include <vector>
-
 #include "drone.h"
 
 class map
@@ -41,11 +40,12 @@ public:
     void remove_drone(int drone_id); // removes drone based on id, which is specific
     drone* get_drone(int id); // gives drone id through reference without changing anything
     bool is_id_taken(int id) const;
+    object_type get_object_type(int x, int y); // gives object type
 
 private:
     std::vector<std::vector<grid_content> > grid; // works with enumerator to determine what is on grid
     std::vector<drone*> drones; // stores drones to keep track of them
-    std::vector<std::vector<object_type>> object_type;
+    std::vector<std::vector<object_type>> object_type; // stores object types
     int map_width;
     int map_height;
     int drone_count;
