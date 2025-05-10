@@ -11,6 +11,7 @@
 // This class inherites from the drone class, and has its own function that allows it to remove/ destroy objects that block a grid coordinate
 class fighter : public drone {
 
+public:
     fighter(const std::string &name, int id, map& gameMap)
         : drone(name, id), gameMap(gameMap), vision_range(3), missle_charges(5) {}
 
