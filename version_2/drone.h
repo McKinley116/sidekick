@@ -4,6 +4,15 @@
 
 class drone {
 public:
+
+    enum missle_type // stores the types of missles that the fighter drone has access to
+    {
+        STANDARD = 0,
+        HEAVY = 1,
+        BURST = 2,
+    };
+
+
     //Constructor
     drone(const std::string &name, int id) {
         this->name = name;
