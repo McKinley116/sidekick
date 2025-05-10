@@ -2,8 +2,6 @@
 #define USER_MENU_H
 
 #include "map.h"
-#include "drone.h"  // Removed extra quote
-#include <iostream>
 
 class user_menu {
 public:
