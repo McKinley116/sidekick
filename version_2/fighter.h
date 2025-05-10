@@ -8,7 +8,7 @@
 #include "drone.h"
 
 
-// This class inherites from the drone class, and has its own function that allows it to remove/ destroy objects that block a gridd coordinate
+// This class inherites from the drone class, and has its own function that allows it to remove/ destroy objects that block a grid coordinate
 class fighter : public drone {
 
     fighter(const std::string &name, int id, map& gameMap) : drone(name, id), gameMap(gameMap)

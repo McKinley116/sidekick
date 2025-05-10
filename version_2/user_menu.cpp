@@ -9,7 +9,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#include <limits>
+
 
 void user_menu::display_menu() const {
     std::cout << "\n=== Drone Management System ===\n";
@@ -18,7 +18,8 @@ void user_menu::display_menu() const {
     std::cout << "3. Remove drone\n";
     std::cout << "4. Display map\n";
     std::cout << "5. Show drone information\n";
-    std::cout << "6. Exit\n";
+    std::cout << "6. Issue drone commands\n";
+    std::cout << "7. Exit\n";
     std::cout << "Enter your choice: ";
 }
 
@@ -64,7 +65,27 @@ void user_menu::handle_add_drone() {
     }
 }
 
-void user_menu::handle_drone_commands() const {
+void user_menu::handle_drone_commands() const
+{
+    if (gameMap.get_drone_count() == 0)
+    {
+        std::cout << "No drones avaliable!\n";
+    }
+
+    std::cout << "\n Avaliable Drones:\n";
+    for (int i = 0; i < gameMap.get_drone_count(); i++)
+    {
+        drone* drone = gameMap.get_drone(i);
+        if (drone)
+        {
+            std::cout << "ID: " << drone->get_id()
+                       << " | Name: " << drone->get_name()
+                       << " | Position: (" << drone->get_position_x()
+                       << "," << drone->get_position_y() << ")\n";
+
+        }
+    }
+}
 
 void user_menu::handle_move_drone() {
     int droneId, newX, newY;

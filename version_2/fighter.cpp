@@ -34,4 +34,7 @@ void scan_target(int x, int y)// scans the target to determine what type of muni
     }
 }
 void fire_missle(int x, int y) {} // allows the user to choose the munititons and fire them
-void get_missle_count(int x, int y) {} // shows the user how many missle are left
+int get_missle_count(int x, int y)// shows the user how many missle are left
+{
+
+}
