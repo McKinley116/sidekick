@@ -219,3 +219,48 @@ bool map::is_id_taken(int id) const {
     }
     return false;
 }
+
+// Add these implementations to map.cpp
+
+void map::set_object_type(int x, int y, object_type type) {
+    if (!is_within_bounds(x, y)) {
+        return;
+    }
+    
+    // Resize object_types vector if needed
+    if (object_types.size() <= y) {
+        object_types.resize(y + 1);
+    }
+    if (object_types[y].size() <= x) {
+        object_types[y].resize(x + 1);
+    }
+    
+    object_types[y][x] = type;
+    
+    // Mark object as scanned
+    if (scanned_objects.size() <= y) {
+        scanned_objects.resize(y + 1);
+    }
+    if (scanned_objects[y].size() <= x) {
+        scanned_objects[y].resize(x + 1);
+    }
+    scanned_objects[y][x] = true;
+}
+
+map::object_type map::get_object_type(int x, int y) const {
+    if (!is_within_bounds(x, y) || 
+        y >= object_types.size() || 
+        x >= object_types[y].size()) {
+        return ENEMY_DRONE; // Default return value
+    }
+    return object_types[y][x];
+}
+
+bool map::is_object_scanned(int x, int y) const {
+    if (!is_within_bounds(x, y) || 
+        y >= scanned_objects.size() || 
+        x >= scanned_objects[y].size()) {
+        return false;
+    }
+    return scanned_objects[y][x];
+}
