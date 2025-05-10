@@ -116,26 +116,75 @@ void user_menu::handle_drone_commands() const
         std::cout << "Drone not found!\n";
     }
 
-    if (!selected_drone) {
-        std::cout << "Drone not found!\n";
-        return;
-    }
-
     std::cout << "\nDrone Type: " << selected_drone->get_drone_type() << "\n";
     std::cout << "Available Commands:\n";
 
-    if (strcmp(selected_drone->get_drone_type(), "Scout") == 0)
-    {
+    int choice, x, y;
+    if (strcmp(selected_drone->get_drone_type(), "Scout") == 0) {
         auto* scout_drone = static_cast<scout*>(selected_drone);
+        std::cout << "\nScout Drone Commands:\n";
         std::cout << "1. Scan target\n";
         std::cout << "2. Check scan charges\n";
+        std::cout << "3. Back to main menu\n";
+        std::cout << "Enter command: ";
+        std::cin >> choice;
+
+        switch (choice) {
+        case 1:
+            std::cout << "Enter X coordinate: ";
+            std::cin >> x;
+            std::cout << "Enter Y coordinate: ";
+            std::cin >> y;
+            scout_drone->scan_target(x, y);
+            break;
+        case 2:
+            std::cout << "Scan charges remaining: " << scout_drone->get_scan_charges() << "\n";
+            break;
+        case 3:
+            return;
+        default:
+            std::cout << "Invalid command!\n";
+            break;
+        }
     }
 
-    else if (strcmp(selected_drone->get_drone_type(), "Fighter") == 0)
-    {
+    else if (strcmp(selected_drone->get_drone_type(), "Fighter") == 0) {
         auto* fighter_drone = static_cast<fighter*>(selected_drone);
-        std::cout << "1. Fire missile\n";
-        std::cout << "2. Check missile count\n";
+        std::cout << "\nFighter Drone Commands:\n";
+        std::cout << "1. Scan target\n";
+        std::cout << "2. Fire missile\n";
+        std::cout << "3. Check missile count\n";
+        std::cout << "4. Back to main menu\n";
+        std::cout << "Enter command: ";
+        std::cin >> choice;
+
+        switch (choice) {
+        case 1:
+            std::cout << "Enter X coordinate: ";
+            std::cin >> x;
+            std::cout << "Enter Y coordinate: ";
+            std::cin >> y;
+            fighter_drone->scan_target(x, y);
+            break;
+        case 2:
+            std::cout << "Enter X coordinate: ";
+            std::cin >> x;
+            std::cout << "Enter Y coordinate: ";
+            std::cin >> y;
+            fighter_drone->fire_missle(x, y);
+            break;
+        case 3:
+            fighter_drone->get_missle_count(x, y);
+            break;
+        case 4:
+            return;
+        default:
+            std::cout << "Invalid command!\n";
+            break;
+        }
+    }
+    else {
+        std::cout << "Unknown drone type!\n";
     }
 
 
