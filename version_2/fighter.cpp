@@ -121,4 +121,6 @@ void fighter::fire_missle(int x, int y) {
         std::cout << "Missiles remaining: " << missle_charges << std::endl;
     }
 }
-//int fighter::get_missle_count(int x, int y)// shows the user how many missle are left
+void fighter::get_missle_count(int x, int y) {
+    std::cout << "Missiles remaining: " << missle_charges << std::endl;
+}
