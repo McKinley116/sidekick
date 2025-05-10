@@ -14,12 +14,12 @@ class scout : public drone {
 
 public:
     scout(const std::string &name, int id, map& gameMap)
-      : drone(name, id), gameMap(gameMap), vision_range(6), scan_charges(10) {}
+      : drone(name, id), gameMap(gameMap), vision_range(6), scan_charges(10) {};
 
-    const char* get_drone_type() const override { return "Scout"; }
-    void scan_target(int x, int y) override{} // i want this to determine what type of object it found (drone, building, blockade)
-    int get_scan_charges() const {}
-    int get_range() const {}
+    const char* get_drone_type() const override { return "Scout"; };
+    void scan_target(int x, int y); // i want this to determine what type of object it found (drone, building, blockade)
+    int get_scan_charges() const {};
+    int get_range() const {};
 
 private:
     int vision_range;

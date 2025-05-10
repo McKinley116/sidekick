@@ -17,7 +17,6 @@ add_executable(sidekick
         user_menu.cpp
         scout.cpp
         fighter.cpp
-
 )
 
 # Adds compiler warnings based on compiler type
