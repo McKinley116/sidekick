@@ -13,12 +13,13 @@
 // drone to determine what an object is and what kind of minutitons the fighter drones needs to destryo it
 void scout::scan_target(int x, int y)
 {
-    if (grid[x][y] == EMPTY)
+    if (gid[x][y] == EMPTY)
     {
         cout << "This gird coordinate is empty" << endl;
     } else if (grid[x][y] == OBJECT)
     {
         cout << "This gird coordinate is an object" << endl;
+
     } else if (grid[x][y] == DRONE)
     {
         cout << "This gird coordinate is a drone" << endl;

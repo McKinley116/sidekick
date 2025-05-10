@@ -18,6 +18,13 @@ public:
         DRONE = 1,
         OBJECT = 2,
     };
+// added to allow scout drone to determine object type
+    enum object_type
+    {
+        ENEMY_DRONE = 0,
+        BUILDING = 1;
+        BLOCKADE = 2;
+    };
 
     //constructor
     map() : map_width(0), map_height(0), drone_count(0), object_count(0) {
