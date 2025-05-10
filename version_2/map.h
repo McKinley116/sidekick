@@ -40,12 +40,15 @@ public:
     void remove_drone(int drone_id); // removes drone based on id, which is specific
     drone* get_drone(int id); // gives drone id through reference without changing anything
     bool is_id_taken(int id) const;
-    object_type get_object_type(int x, int y); // gives object type
+    void set_object_type(int x, int y, object_type type);
+    object_type get_object_type(int x, int y) const;
+    bool is_object_scanned(int x, int y) const;
 
 private:
-    std::vector<std::vector<grid_content> > grid; // works with enumerator to determine what is on grid
+    std::vector<std::vector<grid_content>> grid; // works with enumerator to determine what is on grid
     std::vector<drone*> drones; // stores drones to keep track of them
-    std::vector<std::vector<object_type>> object_type; // stores object types
+    std::vector<std::vector<object_type>> object_types; // Stores the type of each object
+    std::vector<std::vector<bool>> scanned_objects; // Tracks which objects have been scanned
     int map_width;
     int map_height;
     int drone_count;
