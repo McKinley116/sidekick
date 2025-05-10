@@ -30,7 +30,6 @@ void scan_target(int x, int y)// scans the target to determine what type of muni
     }
     if (gameMap.grid[x][y] == OBJECT)
     {
-        if
     }
 }
 void fire_missle(int x, int y) {} // allows the user to choose the munititons and fire them
