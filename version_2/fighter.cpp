@@ -3,6 +3,8 @@
 //
 
 #include "fighter.h"
+#include "map.h"
+#include <iostream>
 
 //the scan target allows the fighter drone to scan an object that a scout drone must first determine idetification, then determines what kind of munitions to use; standard, heavy, burst.
 void fighter::scan_target(int x, int y) {
@@ -119,7 +121,4 @@ void fighter::fire_missle(int x, int y) {
         std::cout << "Missiles remaining: " << missle_charges << std::endl;
     }
 }
-int fighter::get_missle_count(int x, int y)// shows the user how many missle are left
-{
-    return missle_charges;
-}
+//int fighter::get_missle_count(int x, int y)// shows the user how many missle are left

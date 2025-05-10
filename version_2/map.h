@@ -31,6 +31,7 @@ public:
     object_types.clear();
     scanned_objects.clear();
 }
+    std::vector<std::vector<grid_content>> grid; // works with enumerator to determine what is on grid
 
     void generate_map(); // generates random map size
     void generate_objects(); // generates random number of objects for placement on map
@@ -46,9 +47,10 @@ public:
     void set_object_type(int x, int y, object_type type);
     object_type get_object_type(int x, int y) const;
     bool is_object_scanned(int x, int y) const;
+    grid_content get_grid_content(int x, int y);
+    void set_grid_content(int x, int y, grid_content content);
 
 private:
-    std::vector<std::vector<grid_content>> grid; // works with enumerator to determine what is on grid
     std::vector<drone*> drones; // stores drones to keep track of them
     std::vector<std::vector<object_type>> object_types; // Stores the type of each object
     std::vector<std::vector<bool>> scanned_objects; // Tracks which objects have been scanned
