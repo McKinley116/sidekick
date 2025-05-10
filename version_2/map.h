@@ -22,8 +22,8 @@ public:
     enum object_type
     {
         ENEMY_DRONE = 0,
-        BUILDING = 1;
-        BLOCKADE = 2;
+        BUILDING = 1,
+        BLOCKADE = 2,
     };
 
     //constructor
@@ -45,6 +45,7 @@ public:
 private:
     std::vector<std::vector<grid_content> > grid; // works with enumerator to determine what is on grid
     std::vector<drone*> drones; // stores drones to keep track of them
+    std::vector<std::vector<object_type>> object_type;
     int map_width;
     int map_height;
     int drone_count;
