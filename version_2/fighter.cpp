@@ -19,7 +19,19 @@ void scan_target(int x, int y)// scans the target to determine what type of muni
     std::cout << "Scanning target at (" << x << ", " << y << ")..." << std::endl;
     std::cout << "Scan charges left: " << scan_charges << std::endl;
 
-    if
+    if (gameMap.grdi[x][y] == EMPTY )
+    {
+        std::cout << "Invalid Target!" << std::endl;
+        scan_charges--;
+    }
+    if (gameMap.grid[x][y] == DRONE)
+    {
+        std::cout << "Detected: Friendly Drone\n";
+    }
+    if (gameMap.grid[x][y] == OBJECT)
+    {
+        if
+    }
 }
 void fire_missle(int x, int y) {} // allows the user to choose the munititons and fire them
 void get_missle_count(int x, int y) {} // shows the user how many missle are left
