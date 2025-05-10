@@ -242,10 +242,9 @@ void user_menu::run_menu() {
                 handle_show_drone_info();
                 break;
 
-             case 6:
+            case 6:
                 handle_drone_commands();
                 break;
-
 
             case 7:
                 running = false;
