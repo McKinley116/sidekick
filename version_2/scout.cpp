@@ -6,7 +6,6 @@
 #include <random>
 #include <iostream>
 #include <ostream>
-
 #include "map.h"
 
 // the scan target function allows the scout
