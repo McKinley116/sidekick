@@ -30,7 +30,7 @@ void user_menu::clear_input_buffer() const {
 
 void user_menu::handle_add_drone() {
     std::string name;
-    int id, x, y;
+    int id, x, y, type;
     
     // Get drone name
     std::cout << "Enter drone name: ";
@@ -54,15 +54,28 @@ void user_menu::handle_add_drone() {
     std::cin >> y;
     
     // Create new drone with user-provided name and ID
-    drone* new_drone = new drone(name, id);
-    
+    drone* new_drone = nullptr;
+    switch(type) {
+    case 1:
+        new_drone = new scout(name, id, gameMap);
+        break;
+    case 2:
+        new_drone = new fighter(name, id, gameMap);
+        break;
+    default:
+        std::cout << "Invalid drone type\n";
+        return;
+    }
+
     if (gameMap.add_drone(x, y, new_drone)) {
         std::cout << "Drone added successfully!\n";
         gameMap.display_map();
     } else {
-        delete new_drone;  // Clean up if addition fails
+        delete new_drone;
         std::cout << "Failed to add drone. Please try again.\n";
     }
+
+
 }
 
 void user_menu::handle_drone_commands() const
@@ -133,28 +146,38 @@ void user_menu::handle_move_drone() {
         std::cout << "Enter new Y coordinate: ";
         std::cin >> newY;
         
-        // Store all drone properties including name
+        // Store properties of the existing drone
         std::string droneName = selectedDrone->get_name();
         int droneID = selectedDrone->get_id();
+        const char* droneType = selectedDrone->get_drone_type();
         
         // Remove drone from old position
         gameMap.remove_drone(droneId);
         
         // Create new drone with same properties
-        drone* movedDrone = new drone(droneName, droneID);  // Pass the stored name
-        movedDrone->set_position(newX, newY);
-        
-        // Try to add drone at new position
-        if (gameMap.add_drone(newX, newY, movedDrone)) {
-            std::cout << "Drone moved successfully!\n";
-            gameMap.display_map();
+        drone* movedDrone = nullptr;
+        if (strcmp(droneType, "Scout") == 0) {
+            movedDrone = new scout(droneName, droneID, gameMap);
+        } else if (strcmp(droneType, "Fighter") == 0) {
+            movedDrone = new fighter(droneName, droneID, gameMap);
+        }
+
+        if (movedDrone) {
+            movedDrone->set_position(newX, newY);
+            if (gameMap.add_drone(newX, newY, movedDrone)) {
+                std::cout << "Drone moved successfully!\n";
+                gameMap.display_map();
+            } else {
+                std::cout << "Failed to move drone - invalid position\n";
+                delete movedDrone;
+            }
         } else {
-            std::cout << "Failed to move drone - invalid position\n";
-            delete movedDrone;
+            std::cout << "Unknown drone type!\n";
         }
     } else {
         std::cout << "Drone not found!\n";
     }
+
 }
 
 void user_menu::handle_remove_drone() {
