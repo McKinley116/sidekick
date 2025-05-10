@@ -85,6 +85,17 @@ void user_menu::handle_drone_commands() const
 
         }
     }
+
+    // Get drone selection
+    int drone_id;
+    std::cout << "\nEnter drone ID: ";
+    std::cin >> drone_id;
+
+    drone* selected_drone = gameMap.get_drone(drone_id);
+    if (!selected_drone) {
+        std::cout << "Drone not found!\n";
+    }
+
 }
 
 void user_menu::handle_move_drone() {
