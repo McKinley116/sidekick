@@ -16,7 +16,7 @@ class scout : public drone {
         scan_charges = 10;
     }
 
-    bool scan_target(int x, int y) {}
+    bool scan_target(int x, int y) {} // i want this to determine what type of object it found (drone, building, blockade)
     int get_scan_charges() const {}
     int get_range() const {}
 
