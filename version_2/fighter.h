@@ -16,9 +16,9 @@ public:
         : drone(name, id), gameMap(gameMap), vision_range(3), missle_charges(5) {}
 
     const char* get_drone_type() const override { return "Fighter"; }
-    void scan_target(int x, int y) override {}
-    void fire_missle(int x, int y) {}
-    void get_missle_count(int x, int y) {}
+    void scan_target(int x, int y);
+    void fire_missle(int x, int y);
+    void get_missle_count(int x, int y);
 
 private:
     int vision_range;

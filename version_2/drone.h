@@ -9,7 +9,7 @@ public:
         : name(name), id(id), battery(100), position_x(0), position_y(0) {}
     
     virtual ~drone() = default;  // Virtual destructor
-    virtual void scan_target(int x, int y) = 0;  // Pure virtual function
+    //virtual void scan_target(int x, int y) = 0;  // Pure virtual function
     virtual const char* get_drone_type() const = 0;  // Pure virtual function for type identification
 
     void set_name(const std::string& new_name);
