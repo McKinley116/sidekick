@@ -96,6 +96,60 @@ void user_menu::handle_drone_commands() const
         std::cout << "Drone not found!\n";
     }
 
+
+    // Display available commands based on drone type
+    std::cout << "\nAvailable Commands:\n";
+
+    if (auto* scout_drone = dynamic_cast<scout*>(selected_drone)) {
+        std::cout << "1. Scan target\n";
+        std::cout << "2. Check scan charges\n";
+
+        int command;
+        std::cout << "Enter command number: ";
+        std::cin >> command;
+
+        int x, y;
+        switch (command) {
+        case 1:
+            std::cout << "Enter target coordinates (x y): ";
+            std::cin >> x >> y;
+            scout_drone->scan_target(x, y);
+            break;
+        case 2:
+            std::cout << "Scan charges remaining: " << scout_drone->get_scan_charges() << "\n";
+            break;
+        default:
+            std::cout << "Invalid command!\n";
+        }
+    }
+    else if (auto* fighter_drone = dynamic_cast<fighter*>(selected_drone)) {
+        std::cout << "1. Fire missile\n";
+        std::cout << "2. Check missile count\n";
+
+        int command;
+        std::cout << "Enter command number: ";
+        std::cin >> command;
+
+        int x, y;
+        switch (command) {
+        case 1:
+            std::cout << "Enter target coordinates (x y): ";
+            std::cin >> x >> y;
+            fighter_drone->fire_missle(x, y);
+            break;
+        case 2:
+            fighter_drone->get_missle_count(x, y);
+            break;
+        default:
+            std::cout << "Invalid command!\n";
+        }
+    }
+    else {
+        std::cout << "This drone type does not have any special commands.\n";
+    }
+}
+
+
 }
 
 void user_menu::handle_move_drone() {
