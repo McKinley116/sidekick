@@ -19,7 +19,7 @@ private:
     void handle_remove_drone();
     void handle_show_drone_info();
     void clear_input_buffer() const;
-    void handle_drone_command() const;
+    void handle_drone_commands() const; //allows the user to issues specific commands based on the drone type created
 };
 
 #endif //USER_MENU_H
