@@ -19,6 +19,8 @@ public:
     void scan_target(int x, int y);
     void fire_missle(int x, int y);
     void get_missle_count(int x, int y);
+    void rearm_missiles();
+    int get_missile_charges() const { return missle_charges; }
 
 private:
     int vision_range;

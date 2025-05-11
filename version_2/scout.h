@@ -18,7 +18,8 @@ public:
 
     const char* get_drone_type() const override { return "Scout"; };
     void scan_target(int x, int y); // i want this to determine what type of object it found (drone, building, blockade)
-    int get_scan_charges() const {};
+    void recharge_scanner();
+    int get_scan_charges() const { return scan_charges; }
     int get_range() const {};
 
 private:

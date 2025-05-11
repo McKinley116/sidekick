@@ -12,7 +12,12 @@
 // drone to determine what an object is and what kind of minutitons the fighter drones needs to destryo it
 void scout::scan_target(int x, int y) {
     if (scan_charges <= 0) {
-        std::cout << "No charges left! Please charge drone!" << std::endl;
+        std::cout << "No scan charges left! Please recharge scanner!" << std::endl;
+        return;
+    }
+
+    if (!has_enough_battery(10)) {  // Scanning costs 10% battery
+        std::cout << "Not enough battery power! Please charge drone!" << std::endl;
         return;
     }
 
@@ -45,7 +50,9 @@ void scout::scan_target(int x, int y) {
         }
         
         gameMap.set_object_type(x, y, detected_type);
+        decrease_battery(10);  // Decrease battery by 10%
         scan_charges--;
+        std::cout << "Battery level: " << get_battery() << "%" << std::endl;
         std::cout << "Scan charges left: " << scan_charges << std::endl;
     }
     else if (gameMap.grid[y][x] == map::EMPTY) {
@@ -54,4 +61,9 @@ void scout::scan_target(int x, int y) {
     else if (gameMap.grid[y][x] == map::DRONE) {
         std::cout << "Detected: Friendly Drone\n";
     }
+}
+
+void scout::recharge_scanner() {
+    scan_charges = 10;
+    std::cout << "Scanner recharged. Charges: " << scan_charges << std::endl;
 }

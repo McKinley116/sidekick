@@ -51,6 +51,11 @@ void fighter::fire_missle(int x, int y) {
         return;
     }
 
+    if (!has_enough_battery(15)) {  // Firing costs 15% battery
+        std::cout << "Not enough battery power! Please charge drone!" << std::endl;
+        return;
+    }
+
     if (!gameMap.is_within_bounds(x, y)) {
         std::cout << "Target coordinates are outside map boundaries!" << std::endl;
         return;
@@ -116,11 +121,17 @@ void fighter::fire_missle(int x, int y) {
     }
 
     if (hit_successful) {
+        decrease_battery(15);  // Decrease battery by 15%
         missle_charges--;
-        gameMap.grid[y][x] = map::EMPTY; // Remove the destroyed object
+        std::cout << "Battery level: " << get_battery() << "%" << std::endl;
         std::cout << "Missiles remaining: " << missle_charges << std::endl;
     }
 }
 void fighter::get_missle_count(int x, int y) {
     std::cout << "Missiles remaining: " << missle_charges << std::endl;
+}
+
+void fighter::rearm_missiles() {
+    missle_charges = 5;
+    std::cout << "Missiles rearmed. Charges: " << missle_charges << std::endl;
 }

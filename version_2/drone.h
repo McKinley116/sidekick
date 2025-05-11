@@ -22,6 +22,9 @@ public:
     int get_position_y() const { return position_y; }
     void move(int x, int y);
     std::pair<int, int> get_position() const;
+    void decrease_battery(int amount);
+    void charge_battery();
+    bool has_enough_battery(int required) const;
 
 protected:
     std::string name;
