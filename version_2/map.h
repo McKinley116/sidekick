@@ -49,6 +49,8 @@ public:
     bool is_object_scanned(int x, int y) const;
     grid_content get_grid_content(int x, int y);
     void set_grid_content(int x, int y, grid_content content);
+    void bubble_sort();
+    void display_sorted_drones() const;
 
 private:
     std::vector<drone*> drones; // stores drones to keep track of them

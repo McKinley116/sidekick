@@ -19,8 +19,10 @@ void user_menu::display_menu() const {
     std::cout << "4. Display map\n";
     std::cout << "5. Show drone information\n";
     std::cout << "6. Issue drone commands\n";
-    std::cout << "7. Exit\n";
+    std::cout << "7. Sort drones by battery\n";
+    std::cout << "8. Exit\n";
     std::cout << "Enter your choice: ";
+
 }
 
 void user_menu::clear_input_buffer() const {
@@ -186,8 +188,17 @@ void user_menu::handle_drone_commands() const
     else {
         std::cout << "Unknown drone type!\n";
     }
+}
 
+void user_menu::handle_sort_drones() {
+    if (gameMap.get_drone_count() == 0) {
+        std::cout << "No drones to sort!\n";
+        return;
+    }
 
+    std::cout << "\nSorting drones by battery level...\n";
+    gameMap.sort_drones_by_battery();
+    gameMap.display_sorted_drones();
 }
 
 void user_menu::handle_move_drone() {
@@ -296,13 +307,14 @@ void user_menu::run_menu() {
                 break;
 
             case 7:
+                handle_sort_drones();
+                break;
+
+            case 8:
                 running = false;
                 std::cout << "Exiting program...\n";
                 break;
 
-            default:
-                std::cout << "Invalid choice. Please try again.\n";
-                break;
         }
     }
 }

@@ -272,3 +272,53 @@ bool map::is_object_scanned(int x, int y) const {
     }
     return scanned_objects[y][x];
 }
+
+void map::bubble_sort()
+{
+    if (drone_count <= 0)
+    {
+        return;
+    }
+    bool swapped;
+    for (int i = 0; i < drone_count - 1; i++) {
+        swapped = false;
+        for (int j = 0; j < drone_count - i - 1; j++) {
+            // Compare adjacent drones' battery levels
+            if (drones[j]->get_battery() > drones[j + 1]->get_battery()) {
+                // Swap drones
+                drone* temp = drones[j];
+                drones[j] = drones[j + 1];
+                drones[j + 1] = temp;
+                swapped = true;
+            }
+        }
+        // If no swapping occurred, array is already sorted
+        if (!swapped) {
+            break;
+        }
+    }
+
+}
+
+void map::display_sorted_drones() const
+{
+    bool swapped;
+    for (int i = 0; i < drone_count - 1; i++) {
+        swapped = false;
+        for (int j = 0; j < drone_count - i - 1; j++) {
+            // Compare adjacent drones' battery levels
+            if (drones[j]->get_battery() > drones[j + 1]->get_battery()) {
+                // Swap drones
+                drone* temp = drones[j];
+                drones[j] = drones[j + 1];
+                drones[j + 1] = temp;
+                swapped = true;
+            }
+        }
+        // If no swapping occurred, array is already sorted
+        if (!swapped) {
+            break;
+        }
+    }
+
+}
