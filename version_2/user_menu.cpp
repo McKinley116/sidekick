@@ -190,16 +190,10 @@ void user_menu::handle_drone_commands() const
     }
 }
 
-void user_menu::handle_sort_drones() {
-    if (gameMap.get_drone_count() == 0) {
-        std::cout << "No drones to sort!\n";
-        return;
+    void user_menu::handle_sorted_drones() {
+        gameMap.bubble_sort();
+        gameMap.display_sorted_drones();
     }
-
-    std::cout << "\nSorting drones by battery level...\n";
-    gameMap.sort_drones_by_battery();
-    gameMap.display_sorted_drones();
-}
 
 void user_menu::handle_move_drone() {
     int droneId, newX, newY;
@@ -307,7 +301,7 @@ void user_menu::run_menu() {
                 break;
 
             case 7:
-                handle_sort_drones();
+                handle_sorted_drones();
                 break;
 
             case 8:

@@ -273,52 +273,36 @@ bool map::is_object_scanned(int x, int y) const {
     return scanned_objects[y][x];
 }
 
-void map::bubble_sort()
-{
-    if (drone_count <= 0)
-    {
-        return;
-    }
-    bool swapped;
-    for (int i = 0; i < drone_count - 1; i++) {
-        swapped = false;
-        for (int j = 0; j < drone_count - i - 1; j++) {
-            // Compare adjacent drones' battery levels
-            if (drones[j]->get_battery() > drones[j + 1]->get_battery()) {
-                // Swap drones
-                drone* temp = drones[j];
-                drones[j] = drones[j + 1];
-                drones[j + 1] = temp;
-                swapped = true;
+void map::bubble_sort() {
+    int n = drones.size();
+    std::vector<drone*> sorted_drones = drones;  // Create a copy
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (sorted_drones[j]->get_battery() > sorted_drones[j + 1]->get_battery()) {
+                drone* temp = sorted_drones[j];
+                sorted_drones[j] = sorted_drones[j + 1];
+                sorted_drones[j + 1] = temp;
             }
-        }
-        // If no swapping occurred, array is already sorted
-        if (!swapped) {
-            break;
         }
     }
 
+    drones = sorted_drones;  // Replace original with sorted copy
 }
 
-void map::display_sorted_drones() const
-{
-    bool swapped;
-    for (int i = 0; i < drone_count - 1; i++) {
-        swapped = false;
-        for (int j = 0; j < drone_count - i - 1; j++) {
-            // Compare adjacent drones' battery levels
-            if (drones[j]->get_battery() > drones[j + 1]->get_battery()) {
-                // Swap drones
-                drone* temp = drones[j];
-                drones[j] = drones[j + 1];
-                drones[j + 1] = temp;
-                swapped = true;
-            }
-        }
-        // If no swapping occurred, array is already sorted
-        if (!swapped) {
-            break;
-        }
-    }
+void map::display_sorted_drones() const {
+    std::cout << "\nDrone List (Sorted by Battery Level):\n";
+    std::cout << "--------------------------------\n";
+    std::cout << "Name\t\tID\tType\t\tBattery\tPosition\n";
+    std::cout << "--------------------------------\n";
 
+    for (const auto& drone : drones) {
+        std::cout << std::left << std::setw(16) << drone->get_name()
+                 << std::setw(8) << drone->get_id()
+                 << std::setw(16) << drone->get_drone_type()
+                 << std::setw(8) << drone->get_battery() << "% "
+                 << "(" << drone->get_position_x() << ", "
+                 << drone->get_position_y() << ")\n";
+    }
+    std::cout << "--------------------------------\n";
 }
