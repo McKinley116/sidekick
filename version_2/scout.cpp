@@ -56,9 +56,13 @@ void scout::scan_target(int x, int y) {
         std::cout << "Scan charges left: " << scan_charges << std::endl;
     }
     else if (gameMap.grid[y][x] == map::EMPTY) {
+        decrease_battery(10);  // Decrease battery by 10%
+        scan_charges--;
         std::cout << "This location is empty.\n";
     }
     else if (gameMap.grid[y][x] == map::DRONE) {
+        decrease_battery(10);  // Decrease battery by 10%
+        scan_charges--;
         std::cout << "Detected: Friendly Drone\n";
     }
 }
