@@ -99,6 +99,7 @@ void user_menu::handle_add_drone() {
 
 }
 
+
 void user_menu::handle_drone_commands() const
 {
     if (gameMap.get_drone_count() == 0)
@@ -106,19 +107,17 @@ void user_menu::handle_drone_commands() const
         std::cout << "No drones avaliable!\n";
     }
 
-    std::cout << "\n Avaliable Drones:\n";
-    for (int i = 0; i < gameMap.get_drone_count(); i++)
-    {
-        drone* drone = gameMap.get_drone(i);
-        if (drone)
-        {
-            std::cout << "ID: " << drone->get_id()
-                       << " | Name: " << drone->get_name()
-                       << " | Position: (" << drone->get_position_x()
-                       << "," << drone->get_position_y() << ")\n";
-
+    std::cout << "\n Available Drones:\n";
+    for (size_t i = 0; i < gameMap.get_drone_count(); i++) {
+        drone* current_drone = gameMap.get_drone(i + 1); // Assuming IDs start from 1
+        if (current_drone) {
+            std::cout << "ID: " << current_drone->get_id()
+                     << " | Name: " << current_drone->get_name()
+                     << " | Position: (" << current_drone->get_position_x()
+                     << "," << current_drone->get_position_y() << ")\n";
         }
     }
+
 
     // Get drone selection
     int drone_id;
@@ -131,7 +130,6 @@ void user_menu::handle_drone_commands() const
     }
 
     std::cout << "\nDrone Type: " << selected_drone->get_drone_type() << "\n";
-    std::cout << "Available Commands:\n";
 
     int choice, x, y;
 
@@ -164,8 +162,6 @@ void user_menu::handle_drone_commands() const
         case 4:
             scout_drone->recharge_scanner();
             break;
-        case 5:
-            return;
         default:
             std::cout << "Invalid command!\n";
             break;
