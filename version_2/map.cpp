@@ -128,6 +128,37 @@ void map::remove_drone(int drone_id) {
     std::cout << "Error: Drone with ID " << drone_id << " not found.\n";
 }
 
+void map::remove_object(int x, int y)
+{
+    // Check if coordinates are within bounds
+    if (!is_within_bounds(x, y)) {
+        std::cout << "Error: Position (" << x << ", " << y << ") is outside map bounds.\n";
+        return;
+    }
+
+    // Check if there's actually an object at this position
+    if (grid[y][x] != OBJECT) {
+        std::cout << "Error: No object at position (" << x << ", " << y << ").\n";
+        return;
+    }
+
+    // Clear the grid position
+    grid[y][x] = EMPTY;
+
+    // Clear the object type and scanned status
+    if (y < object_types.size() && x < object_types[y].size()) {
+        object_types[y][x] = ENEMY_DRONE; // Reset to default
+    }
+    if (y < scanned_objects.size() && x < scanned_objects[y].size()) {
+        scanned_objects[y][x] = false;
+    }
+
+    // Decrease object count
+    object_count--;
+
+}
+
+
 drone* map::get_drone(int id)
 {
     for (int i = 0; i < drones.size(); i++)

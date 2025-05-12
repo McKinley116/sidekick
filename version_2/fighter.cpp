@@ -123,8 +123,10 @@ void fighter::fire_missle(int x, int y) {
     if (hit_successful) {
         decrease_battery(15);  // Decrease battery by 15%
         missle_charges--;
+        gameMap.remove_object(x, y);
         std::cout << "Battery level: " << get_battery() << "%" << std::endl;
         std::cout << "Missiles remaining: " << missle_charges << std::endl;
+
     }
 }
 void fighter::get_missle_count(int x, int y) {

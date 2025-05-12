@@ -42,6 +42,7 @@ public:
     void sort_drones_by_battery(); // uses bubble sort? works with drone vector or array?
     bool add_drone(int x, int y, drone* new_drone); // Modified to accept drone pointer
     void remove_drone(int drone_id); // removes drone based on id, which is specific
+    void remove_object(int x, int y); // removes object based on x and y coordinates
     drone* get_drone(int id); // gives drone id through reference without changing anything
     bool is_id_taken(int id) const;
     void set_object_type(int x, int y, object_type type);
