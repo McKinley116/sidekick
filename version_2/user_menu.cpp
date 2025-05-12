@@ -12,6 +12,7 @@
 
 
 void user_menu::display_menu() const {
+    std::cout << "\n";
     std::cout << "\n=== Drone Management System ===\n";
     std::cout << "1. Add new drone\n";
     std::cout << "2. Move drone\n";
@@ -131,86 +132,94 @@ void user_menu::handle_drone_commands() const
 
     std::cout << "\nDrone Type: " << selected_drone->get_drone_type() << "\n";
 
-    int choice, x, y;
+    int x, y, choice;
 
-    if (strcmp(selected_drone->get_drone_type(), "Scout") == 0) {
-        auto* scout_drone = static_cast<scout*>(selected_drone);
-        std::cout << "\nScout Drone Commands:\n";
-        std::cout << "1. Scan target\n";
-        std::cout << "2. Check scan charges\n";
-        std::cout << "3. Charge battery\n";
-        std::cout << "4. Recharge scanner\n";
-        std::cout << "5. Back to main menu\n";
-        std::cout << "Enter command: ";
-        std::cin >> choice;
+        if (strcmp(selected_drone->get_drone_type(), "Scout") == 0) {
+            do
+            {
+                auto* scout_drone = static_cast<scout*>(selected_drone);
+                std::cout << "\nScout Drone Commands:\n";
+                std::cout << "1. Scan target\n";
+                std::cout << "2. Check scan charges\n";
+                std::cout << "3. Charge battery\n";
+                std::cout << "4. Recharge scanner\n";
+                std::cout << "5. Back to main menu\n";
+                std::cout << "Enter command: ";
+                std::cin >> choice;
 
 
-        switch (choice) {
-        case 1:
-            std::cout << "Enter X coordinate: ";
-            std::cin >> x;
-            std::cout << "Enter Y coordinate: ";
-            std::cin >> y;
-            scout_drone->scan_target(x, y);
-            break;
-        case 2:
-            std::cout << "Scan charges remaining: " << scout_drone->get_scan_charges() << "\n";
-            break;
-        case 3:
-            scout_drone->charge_battery();
-            break;
-        case 4:
-            scout_drone->recharge_scanner();
-            break;
-        default:
-            std::cout << "Invalid command!\n";
-            break;
+                switch (choice) {
+                case 1:
+                    std::cout << "Enter X coordinate: ";
+                    std::cin >> x;
+                    std::cout << "Enter Y coordinate: ";
+                    std::cin >> y;
+                    scout_drone->scan_target(x, y);
+                    break;
+                case 2:
+                    std::cout << "Scan charges remaining: " << scout_drone->get_scan_charges() << "\n";
+                    break;
+                case 3:
+                    scout_drone->charge_battery();
+                    break;
+                case 4:
+                    scout_drone->recharge_scanner();
+                    break;
+                case 5:
+                    return;
+                default:
+                    break;
+
+                }
+            } while (choice != 5);
 
         }
-    }
     else if (strcmp(selected_drone->get_drone_type(), "Fighter") == 0) {
-        auto* fighter_drone = static_cast<fighter*>(selected_drone);
-        std::cout << "\nFighter Drone Commands:\n";
-        std::cout << "1. Scan target\n";
-        std::cout << "2. Fire missile\n";
-        std::cout << "3. Check missile count\n";
-        std::cout << "4. Charge battery\n";
-        std::cout << "5. Rearm missiles\n";
-        std::cout << "6. Back to main menu\n";
-        std::cout << "Enter command: ";
-        std::cin >> choice;
+        do
+        {
+            auto* fighter_drone = static_cast<fighter*>(selected_drone);
+            std::cout << "\nFighter Drone Commands:\n";
+            std::cout << "1. Scan target\n";
+            std::cout << "2. Fire missile\n";
+            std::cout << "3. Check missile count\n";
+            std::cout << "4. Charge battery\n";
+            std::cout << "5. Rearm missiles\n";
+            std::cout << "6. Back to main menu\n";
+            std::cout << "Enter command: ";
+            std::cin >> choice;
 
 
-        switch (choice) {
-        case 1:
-            std::cout << "Enter X coordinate: ";
-            std::cin >> x;
-            std::cout << "Enter Y coordinate: ";
-            std::cin >> y;
-            fighter_drone->scan_target(x, y);
-            break;
-        case 2:
-            std::cout << "Enter X coordinate: ";
-            std::cin >> x;
-            std::cout << "Enter Y coordinate: ";
-            std::cin >> y;
-            fighter_drone->fire_missle(x, y);
-            break;
-        case 3:
-            fighter_drone->get_missle_count(x, y);
-            break;
-        case 4:
-            fighter_drone->charge_battery();
-            break;
-        case 5:
-            fighter_drone->rearm_missiles();
-            break;
-        case 6:
-            return;
-        default:
-            std::cout << "Invalid command!\n";
-            break;
-        }
+            switch (choice) {
+            case 1:
+                std::cout << "Enter X coordinate: ";
+                std::cin >> x;
+                std::cout << "Enter Y coordinate: ";
+                std::cin >> y;
+                fighter_drone->scan_target(x, y);
+                break;
+            case 2:
+                std::cout << "Enter X coordinate: ";
+                std::cin >> x;
+                std::cout << "Enter Y coordinate: ";
+                std::cin >> y;
+                fighter_drone->fire_missle(x, y);
+                break;
+            case 3:
+                fighter_drone->get_missle_count(x, y);
+                break;
+            case 4:
+                fighter_drone->charge_battery();
+                break;
+            case 5:
+                fighter_drone->rearm_missiles();
+                break;
+            case 6:
+                return;
+            default:
+                std::cout << "Invalid command!\n";
+                break;
+            }
+        } while (choice != 6);
     }
     else {
         std::cout << "Unknown drone type!\n";
