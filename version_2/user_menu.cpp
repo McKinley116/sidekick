@@ -36,12 +36,24 @@ void user_menu::handle_add_drone() {
     
     // Get drone name
     std::cout << "Enter drone name: ";
-    clear_input_buffer();
+    std::cin.clear();
+    std::cin.ignore(0);
     std::getline(std::cin, name);
+
+    if (name.empty()) {
+        std::cout << "Error: Drone name cannot be empty\n";
+        return;
+    }
     
     // Get drone ID and validate it
     std::cout << "Enter drone ID: ";
-    std::cin >> id;
+    if (!(std::cin >> id)) {
+        std::cout << "Error: Invalid ID input\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        return;
+    }
+
     
     // Keep asking for a new ID if the current one is taken
     while (gameMap.is_id_taken(id)) {
