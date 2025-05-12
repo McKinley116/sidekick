@@ -1,7 +1,7 @@
 # Drone Management System
 
 ## Overview
-Sidekick is a C++ console application that simulates a tactical drone control environment. The system allows users to manage and control different types of drones (Scout and Fighter) on a randomly generated map with various objects and obstacles.
+Sidekick is a C++ console application that simulates a tactical drone control environment. The system allows users to manage and control different types of drones (Scout and Fighter) on a randomly generated map with various objects and obstacles. THIS USES VERSION 2. VERSION 1 was a test to decide on features
 
 ## Table of Contents
 1. [Architecture Overview](#architecture-overview)
