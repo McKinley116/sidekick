@@ -37,21 +37,25 @@ void scout::scan_target(int x, int y) {
         switch (dis(gen)) {
             case 0:
                 detected_type = map::ENEMY_DRONE;
+                decrease_battery(10);  // Decrease battery by 10%
+                scan_charges--;
                 std::cout << "Detected: Enemy Drone!\n";
                 break;
             case 1:
                 detected_type = map::BUILDING;
+                decrease_battery(10);  // Decrease battery by 10%
+                scan_charges--;
                 std::cout << "Detected: Building\n";
                 break;
             case 2:
                 detected_type = map::BLOCKADE;
+                decrease_battery(10);  // Decrease battery by 10%
+                scan_charges--;
                 std::cout << "Detected: Blockade\n";
                 break;
         }
         
         gameMap.set_object_type(x, y, detected_type);
-        decrease_battery(10);  // Decrease battery by 10%
-        scan_charges--;
         std::cout << "Battery level: " << get_battery() << "%" << std::endl;
         std::cout << "Scan charges left: " << scan_charges << std::endl;
     }
@@ -59,11 +63,15 @@ void scout::scan_target(int x, int y) {
         decrease_battery(10);  // Decrease battery by 10%
         scan_charges--;
         std::cout << "This location is empty.\n";
+        std::cout << "Battery level: " << get_battery() << "%" << std::endl;
+        std::cout << "Scan charges left: " << scan_charges << std::endl;
     }
     else if (gameMap.grid[y][x] == map::DRONE) {
         decrease_battery(10);  // Decrease battery by 10%
         scan_charges--;
         std::cout << "Detected: Friendly Drone\n";
+        std::cout << "Battery level: " << get_battery() << "%" << std::endl;
+        std::cout << "Scan charges left: " << scan_charges << std::endl;
     }
 }
 
